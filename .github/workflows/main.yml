@@ -9,5 +9,7 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
+    - name: Getting current directory
+      run: pwd
     - name: Run main check
-      run: ./tests/main.py
+      run: tests/main.py
