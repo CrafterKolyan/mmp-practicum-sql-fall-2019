@@ -11,23 +11,4 @@ jobs:
     - name: Checkout to workspace
       uses: actions/checkout@master
 
-    - name: Setting bot's name and email
-      run: |
-        git config --global user.email "action@github.com"
-        git config --global user.name "CrBot"
 
-    - name: Rebasing commit to origin/master
-      run: git rebase origin/master
-
-    - name: Run main check
-      run: util/main_check.py
-
-    - name: Install requests
-      if: success()
-      run: pip install requests
-
-    - name: Merge pull request
-      if: success()
-      run: util/merge_pull_request.py
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
