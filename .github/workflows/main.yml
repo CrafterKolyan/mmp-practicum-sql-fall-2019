@@ -1,6 +1,6 @@
 name: Main
 
-on: [pull_request, check_run]
+on: [check_run]
 
 jobs:
   tests:
