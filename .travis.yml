@@ -1,8 +1,11 @@
 language: python
-after_success:
+
+install: true
+
+script:
   - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
-       then echo 123
-       else echo 333
+       then true;
+       else false;
     fi'
 
 notifications:
