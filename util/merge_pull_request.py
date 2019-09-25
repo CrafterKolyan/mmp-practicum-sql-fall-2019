@@ -31,6 +31,7 @@ def create_session(github_token):
 if __name__ == "__main__":
     event_path = os.environ["GITHUB_EVENT_PATH"]
     event_data = json.load(open(event_path))
+    print(event_data)
 
     check_run = event_data["check_run"]
     name = check_run["name"]
