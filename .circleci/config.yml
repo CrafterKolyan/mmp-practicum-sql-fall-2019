@@ -5,4 +5,4 @@
        - image: circleci/python:3.7
      steps:
        - checkout
-       - run: echo "123"
+       - run: echo "123" | false
