@@ -2,7 +2,7 @@ language: python
 
 install: true
 
-after_success:
+script:
   - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
        then echo 333
        else echo 123
