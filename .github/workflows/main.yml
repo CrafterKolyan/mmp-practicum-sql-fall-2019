@@ -1,6 +1,6 @@
 name: Main
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   tests:
@@ -10,6 +10,11 @@ jobs:
     steps:
     - name: Checkout to workspace
       uses: actions/checkout@master
+
+    - name: Setting bot's name and email
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "CrBot"
 
     - name: Rebasing commit to origin/master
       run: git rebase origin/master
