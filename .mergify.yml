@@ -1,0 +1,7 @@
+pull_request_rules:
+  - name: Comment when Travis CI passes
+    conditions:
+      - status-success=Travis CI - Pull Request
+    actions:
+      comment:
+        message: "OK"
