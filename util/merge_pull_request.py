@@ -32,6 +32,17 @@ if __name__ == "__main__":
     event_path = os.environ["GITHUB_EVENT_PATH"]
     event_data = json.load(open(event_path))
 
+    check_run = event_data["check_run"]
+    name = check_run["name"]
+
+    if check_run["status"] != "completed":
+        print(f"*** Check run {name} has not completed")
+        sys.exit(78)
+
+    if check_run["conclusion"] != "success":
+        print(f"*** Check run {name} has not succeeded")
+        sys.exit(1)
+
     assert len(check_run["pull_requests"]) == 1
     pull_request = check_run["pull_requests"][0]
     pr_number = pull_request["number"]
