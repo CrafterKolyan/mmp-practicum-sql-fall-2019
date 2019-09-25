@@ -3,9 +3,10 @@ sudo: false
 
 os: linux
 
+install: true
+
 script:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo "PULL REQUEST"; fi'
-  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo "NOT PULL REQUEST"; fi'
+  - 'true'
 
 notifications:
   email: false
