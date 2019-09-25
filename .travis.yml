@@ -5,7 +5,7 @@ install: true
 script:
   - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
        then true;
-       else true;
+       else false;
     fi'
 
 notifications:
