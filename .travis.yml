@@ -6,7 +6,8 @@ os: linux
 install: true
 
 script:
-  - 'true'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo "PULL REQUEST"; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo "NOT PULL REQUEST"; fi'
 
 notifications:
   email: false
