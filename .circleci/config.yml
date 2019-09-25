@@ -1,8 +1,8 @@
  version: 2
  jobs:
-   tests:
+   build:
      docker:
        - image: circleci/python:3.7
      steps:
        - checkout
-       - run: echo "123" | false
+       - run: echo "123"
