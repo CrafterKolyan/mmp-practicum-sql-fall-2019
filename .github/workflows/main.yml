@@ -9,5 +9,5 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - name: Run tests
-      run: ./tests/task1/main.py
+    - name: Run main check
+      run: ./tests/main.py
