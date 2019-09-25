@@ -1,0 +1,11 @@
+language: python
+sudo: false
+
+os: linux
+
+script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then echo "PULL REQUEST"; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then echo "NOT PULL REQUEST"; fi'
+
+notifications:
+  email: false
