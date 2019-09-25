@@ -11,7 +11,7 @@ jobs:
     - name: Checkout to workspace
       uses: actions/checkout@master
     - name: automerge
-        uses: "pascalgn/automerge-action@12f21da8e4282e5e95522fcd14374e78a7a24794"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+      uses: "pascalgn/automerge-action@12f21da8e4282e5e95522fcd14374e78a7a24794"
+      env:
+        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
