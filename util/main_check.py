@@ -6,6 +6,7 @@ import re
 import sys
 import json
 
+sys.exit(0)
 
 user = os.environ.get('GITHUB_ACTOR', None)
 if not user:
