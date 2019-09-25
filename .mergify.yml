@@ -1,5 +1,7 @@
 pull_request_rules:
   - name: Comment when Travis CI passes
+    conditions:
+      - base=test
     actions:
       comment:
         message: "Nicy nice"
