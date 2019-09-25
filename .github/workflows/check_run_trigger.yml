@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Do nothing
-      run: true
+    - name: Say everything is bad
+      run: false
