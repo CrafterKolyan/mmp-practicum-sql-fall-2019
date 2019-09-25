@@ -29,6 +29,7 @@ def create_session(github_token):
 
 
 if __name__ == "__main__":
+	print("hello")
     event_path = os.environ["GITHUB_EVENT_PATH"]
     event_data = json.load(open(event_path))
     print(event_data)
