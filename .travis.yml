@@ -4,3 +4,7 @@ after_success:
        then echo 123
        else echo 333
     fi'
+
+notifications:
+  email:
+    false
