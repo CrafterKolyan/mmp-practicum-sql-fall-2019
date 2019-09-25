@@ -4,8 +4,8 @@ install: true
 
 script:
   - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
-       then echo 333
-       else echo 123
+       then echo 333;
+       else echo 123;
     fi'
 
 notifications:
