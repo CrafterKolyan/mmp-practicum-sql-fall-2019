@@ -1,12 +1,10 @@
-name: check_run trigger
-
-on: [pull_request]
+name: Auto approve
+on: pull_request
 
 jobs:
-  tests:
-
+  build:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Do nothing
-      run: true
+    - uses: hmarr/auto-approve-action@v2.0.0
+      with:
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
