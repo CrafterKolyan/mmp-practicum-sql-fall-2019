@@ -1,15 +1,28 @@
 name: Main
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  build:
+  tests:
 
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Getting current directory
-      run: pwd
+    - name: Checkout to workspace
+      uses: actions/checkout@master
+
+    - name: Rebasing commit to origin/master
+      run: git rebase origin/master
+
     - name: Run main check
-      run: tests/main.py
+      run: util/main_check.py
+
+    - name: Install requests
+      if: success()
+      run: pip install requests
+
+    - name: Merge pull request
+      if: success()
+      run: util/merge_pull_request.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
