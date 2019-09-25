@@ -1,7 +1,7 @@
 pull_request_rules:
   - name: Comment when circleci passes
     conditions:
-      - files~=task[1-6]/\w+\.sql
+      - files!=.circleci/config.yml
       - "status-success=ci/circleci: build"
     actions:
       comment:
