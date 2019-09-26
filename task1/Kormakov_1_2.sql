@@ -1,0 +1,1 @@
+SELECT first FROM db
