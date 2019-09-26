@@ -3,7 +3,7 @@ pull_request_rules:
     conditions:
       - -files~=\.github/.*
       - -files~=util/.*
-      - "status-success=ci/circleci: build"
+      - status-success=Main / tests (pull_request)
     actions:
       comment:
         message: "OK"
