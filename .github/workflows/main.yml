@@ -13,4 +13,11 @@ jobs:
 
     - name: Set bot's name and email
       run: |
-        true
+        git config --global user.name "Github Action"
+        git config --global user.email "action@github.com"
+
+    - name: Rebasing commit to origin/master
+      run: git rebase origin/master
+
+    - name: Run main check
+      run: util/main_check.py
