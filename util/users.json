@@ -1,4 +1,18 @@
 {
-	"CrafterKolyan": ["Korolev", "Kormakov"],
-	"mrph2898": ["Kormakov"]
+	"CrafterKolyan": [
+		"Eremeev",
+		"Korolev",
+		"Kormakov",
+		"Nakhodnov",
+		"Popov"],
+	"mergify": [
+		"Eremeev",
+		"Korolev",
+		"Kormakov",
+		"Nakhodnov",
+		"Popov"],
+	"mrph2898": ["Kormakov"],
+	"aredosbyk": ["Popov"],
+	"maks5507": ["Eremeev"],
+	"nakhodnov17": ["Nakhodnov"]
 }
