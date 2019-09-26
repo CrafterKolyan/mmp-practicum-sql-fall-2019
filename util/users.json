@@ -1,4 +1,4 @@
 {
-	"CrafterKolyan": "Korolev",
-	"mrph2898": "Kormakov"
+	"CrafterKolyan": ["Korolev", "Kormakov"],
+	"mrph2898": ["Kormakov"]
 }

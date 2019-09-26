@@ -1,10 +1,11 @@
 pull_request_rules:
-  - name: Comment when circleci passes
+  - name: Auto-merge pull request bot
     conditions:
       - -files~=\.github/.*
       - -files~=util/.*
       - base=master
       - -conflict
+      - -closed
       - status-success=tests
     actions:
       merge:
@@ -12,5 +13,5 @@ pull_request_rules:
         strict_method: rebase
         method: squash
       comment:
-        message: "Rebased, Squashed and Merged!"
+        message: "Принято!"
 
