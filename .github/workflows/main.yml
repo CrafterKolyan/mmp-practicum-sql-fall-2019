@@ -16,13 +16,3 @@ jobs:
 
     - name: Run main check
       run: util/main_check.py
-
-    - name: Install requests
-      if: success()
-      run: pip install requests
-
-    - name: Merge pull request
-      if: success()
-      run: util/merge_pull_request.py
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
