@@ -19,7 +19,7 @@ with open(f'{directory}/users.json') as users:
 
 surname = users_to_rights.get(user, None)
 if not surname:
-	print(f"Пользователь не имеет прав писать в данный репозиторий")
+	print(f"Пользователь не имеет прав писать в данный репозиторsий")
 	sys.exit(1)
 
 re_task_files = re.compile(fr"task([1-6])/{surname}_\1_\d\.sql")
