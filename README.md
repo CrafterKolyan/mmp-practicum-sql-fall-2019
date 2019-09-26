@@ -56,7 +56,7 @@ git stash pop
 ```
 git push origin --force-with-lease
 ```
-Можно дополнить убрать добавленный `remote`:
+Можно дополнительно убрать добавленный `remote`:
 ```
 git remote remove root
 ```
