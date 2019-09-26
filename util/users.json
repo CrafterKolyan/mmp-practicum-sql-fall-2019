@@ -4,15 +4,20 @@
 		"Korolev",
 		"Kormakov",
 		"Nakhodnov",
-		"Popov"],
+		"Popov",
+		"Saenko"
+	],
 	"mergify": [
 		"Eremeev",
 		"Korolev",
 		"Kormakov",
 		"Nakhodnov",
-		"Popov"],
+		"Popov",
+		"Saenko"
+	],
 	"mrph2898": ["Kormakov"],
 	"aredosbyk": ["Popov"],
 	"maks5507": ["Eremeev"],
-	"nakhodnov17": ["Nakhodnov"]
+	"nakhodnov17": ["Nakhodnov"],
+	"tigersay1": ["Saenko"]
 }
