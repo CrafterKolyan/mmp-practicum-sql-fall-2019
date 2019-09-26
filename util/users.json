@@ -1,23 +1,10 @@
 {
-	"CrafterKolyan": [
-		"Eremeev",
-		"Korolev",
-		"Kormakov",
-		"Nakhodnov",
-		"Popov",
-		"Saenko"
-	],
-	"mergify": [
-		"Eremeev",
-		"Korolev",
-		"Kormakov",
-		"Nakhodnov",
-		"Popov",
-		"Saenko"
-	],
+	"CrafterKolyan": ["[A-Z][a-z]*"],
+	"mergify": ["[A-Z][a-z]*"],
 	"mrph2898": ["Kormakov"],
 	"aredosbyk": ["Popov"],
 	"maks5507": ["Eremeev"],
 	"nakhodnov17": ["Nakhodnov"],
-	"tigersay1": ["Saenko"]
+	"tigersay1": ["Saenko"],
+	"sasasagagaga": ["Chernyshev"]
 }
