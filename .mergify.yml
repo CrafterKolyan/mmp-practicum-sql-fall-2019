@@ -3,8 +3,14 @@ pull_request_rules:
     conditions:
       - -files~=\.github/.*
       - -files~=util/.*
+      - base=master
+      - -conflict
       - status-success=tests
     actions:
+      merge:
+        strict: smart
+        strict_method: rebase
+        method: squash
       comment:
-        message: "OK"
+        message: "Rebased, Squashed and Merged!"
 
