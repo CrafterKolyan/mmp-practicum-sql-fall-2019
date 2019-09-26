@@ -3,7 +3,9 @@ pull_request_rules:
     conditions:
       - -files~=\.github/.*
       - -files~=util/.*
-      - status-success=Main / tests (pull_request)
+      "- status-success=Main / tests (pull_request)"
+      "- status-success=Main / tests (pull_request) "
+      "- status-success=Main / tests (push)"
     actions:
       comment:
         message: "OK"
