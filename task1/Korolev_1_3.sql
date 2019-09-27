@@ -1,5 +1,5 @@
 SELECT DISTINCT
-  CONCAT (FLOOR (YEAR (birth_dt) / 10), '0-е') AS generation
+  CONCAT(FLOOR(YEAR(birth_dt) / 10), '0-е') AS generation
 FROM
   cd_customers
 WHERE
