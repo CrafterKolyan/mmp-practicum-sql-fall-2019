@@ -3,7 +3,7 @@ name: Main
 on: [push, pull_request]
 
 jobs:
-  tests:
+  security_check:
 
     runs-on: ubuntu-latest
     
