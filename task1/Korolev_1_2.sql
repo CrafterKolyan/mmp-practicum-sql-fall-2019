@@ -1,9 +1,9 @@
-select
+SELECT
   monthly_income_amt
-from
+FROM
   cd_customers
-where 
+WHERE 
   valid_from_dttm <= '2014-01-01 00:00:00'
-  and valid_to_dttm >= '2014-01-01 00:00:00'
-order by monthly_income_amt desc
-limit 10
+  AND valid_to_dttm >= '2014-01-01 00:00:00'
+ORDER BY monthly_income_amt DESC
+LIMIT 10
