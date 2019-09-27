@@ -19,5 +19,5 @@ jobs:
     - name: Rebasing commit to origin/master
       run: git rebase origin/master
 
-    - name: Run main check
-      run: util/main_check.py
+    - name: Run security check
+      run: util/security_check.py
