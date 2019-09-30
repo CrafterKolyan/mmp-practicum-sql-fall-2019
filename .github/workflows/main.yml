@@ -16,8 +16,10 @@ jobs:
         git config --global user.name "Github Action"
         git config --global user.email "action@github.com"
 
-    - name: Rebasing commit to origin/master
-      run: git rebase origin/master
+    - name: Emulating merge commit to origin/master
+      run: |
+        git checkout origin/master
+        git merge --no-ff "$GITHUB_SHA"
 
     - name: Run security check
       run: util/security_check.py
