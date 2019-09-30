@@ -7,6 +7,6 @@ WHERE
     AND
     	valid_to_dttm > '2014-01-01 00:00:00'
 ORDER BY
-    monthly_income_amt DESC
+    	monthly_income_amt DESC
 LIMIT 10
 
