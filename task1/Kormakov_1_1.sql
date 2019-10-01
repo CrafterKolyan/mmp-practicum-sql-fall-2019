@@ -1,8 +1,8 @@
 SELECT 
     customer_rk,
     CASE
-        WHEN UPPER(middle_nm) LIKE '%ИЧ' THEN 'M'
-        WHEN UPPER(middle_nm) LIKE '%НА' THEN 'F'
+        WHEN middle_nm LIKE '%ИЧ' THEN 'M'
+        WHEN middle_nm LIKE '%НА' THEN 'F'
         ELSE NULL
     END AS gender
 FROM
