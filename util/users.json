@@ -1,6 +1,6 @@
 {
 	"CrafterKolyan": ["[A-Z][a-z]*"],
-	"mergify": ["[A-Z][a-z]*"],
+	"mergify[bot]": ["[A-Z][a-z]*"],
 	"mrph2898": ["Kormakov"],
 	"aredosbyk": ["Popov"],
 	"maks5507": ["Eremeev"],
