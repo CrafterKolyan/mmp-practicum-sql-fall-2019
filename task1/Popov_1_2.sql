@@ -1,5 +1,3 @@
-USE srcdt;
-
 SELECT 
 	monthly_income_amt AS monthly_income2014
 FROM
