@@ -6,7 +6,7 @@ pull_request_rules:
       - base=master
       - -conflict
       - -closed
-      - status-success=security_check
+      - status-success=691b14fc-75d8-56f4-fa64-9a74633dde34
     actions:
       merge:
         strict: smart
