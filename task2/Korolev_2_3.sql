@@ -1,4 +1,4 @@
-SELECT age, COUNT(*) as quantity
+SELECT age, COUNT(*) AS quantity
 FROM (
   SELECT
     TIMESTAMPDIFF(YEAR, birth_dt, CURDATE()) AS age
