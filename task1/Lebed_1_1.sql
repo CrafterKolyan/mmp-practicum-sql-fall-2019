@@ -1,9 +1,8 @@
 select
 	customer_rk,
 	case
-		when upper(middle_nm) like "%НА" then "F"
-		when upper(middle_nm) like "%ИЧ" then "M"
-		else "не знаю"
+		when middle_nm like "%НА" then "F"
+		when middle_nm like "%ИЧ" then "M"
 	end as gender
 from
 	srcdt.cd_customers
