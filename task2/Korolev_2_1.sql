@@ -9,4 +9,4 @@ FROM (
     customer_rk
   HAVING
     COUNT(*) = 1
-  ) AS unique_customers
+  ) AS unique_customers_size
