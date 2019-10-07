@@ -1,13 +1,16 @@
-select age, count(*) as quantity
-from (
-select
-  customer_rk,
-  TIMESTAMPDIFF(YEAR, birth_dt, CURDATE()) as age
-from
-  cd_customers
-where
-  valid_to_dttm = '5999-01-01 00:00:00'
-) as a
-where age >= 15 and age <= 80
-group by age
-order by age desc
+SELECT age, COUNT(*) as quantity
+FROM (
+  SELECT
+    TIMESTAMPDIFF(YEAR, birth_dt, CURDATE()) AS age
+  FROM
+    cd_customers
+  WHERE
+    valid_to_dttm = '5999-01-01 00:00:00'
+  ) AS ages
+WHERE
+  age >= 15
+  AND age <= 80
+GROUP BY
+  age
+ORDER BY
+  age DESC
