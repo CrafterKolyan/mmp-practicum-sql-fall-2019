@@ -1,4 +1,6 @@
-SELECT age, COUNT(*) AS quantity
+SELECT
+  age,
+  COUNT(*) AS customers
 FROM (
   SELECT
     TIMESTAMPDIFF(YEAR, birth_dt, CURDATE()) AS age
