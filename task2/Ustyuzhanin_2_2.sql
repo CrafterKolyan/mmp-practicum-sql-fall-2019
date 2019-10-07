@@ -14,6 +14,6 @@ FROM
 		count(DISTINCT monthly_income_amt) = 2
 	ORDER BY
 		dt
-	) as sql_kostil
+) as sql_kostil
 GROUP BY
 	dt
