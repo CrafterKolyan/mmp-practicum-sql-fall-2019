@@ -8,7 +8,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 
 TOTAL_TASKS = 6
 PROJECT_DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MAX_WORKERS = 20
+START_TASK = 3
 
 exit_code = 0
 
@@ -26,7 +26,7 @@ connection = MySQLdb.connect(host = "trjudge.cs.msu.ru",
                              charset = "utf8")
 
 
-for i in range(2, TOTAL_TASKS):
+for i in range(START_TASK, TOTAL_TASKS + 1):
     folder = os.path.join(PROJECT_DIRECTORY, f"task{i}")
     if not os.path.exists(folder):
         continue
@@ -52,6 +52,8 @@ for i in range(2, TOTAL_TASKS):
                 result = get_sql_result(connection, sql_query)
             except Exception as e:
                 print(f"{filename} -> Exception: {e}")
+                if e[1] != 'Query was empty':
+                    exit_code = 1 
             else:
                 filenames = groups.get(result, [])
                 filenames.append(filename)
