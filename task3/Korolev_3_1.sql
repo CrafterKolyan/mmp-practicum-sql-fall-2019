@@ -4,16 +4,24 @@ SELECT
   popularity
 FROM
   cd_customers
-  INNER JOIN (
+  LEFT JOIN (
     SELECT
         last_nm,
         first_nm, 
         middle_nm,
         COUNT(*) AS popularity
-    FROM cd_customers
-    WHERE valid_to_dttm = '5999-01-01 00:00:00'
+    FROM
+      cd_customers
+    WHERE
+      valid_to_dttm = '5999-01-01 00:00:00'
     GROUP BY
-        last_nm, first_nm, middle_nm
+        last_nm,
+        first_nm,
+        middle_nm
   ) AS popularities
-  ON cd_customers.last_nm = popularities.last_nm AND cd_customers.first_nm = popularities.first_nm AND cd_customers.middle_nm = popularities.middle_nm
-WHERE valid_to_dttm = '5999-01-01 00:00:00'
+  ON
+    cd_customers.last_nm = popularities.last_nm
+    AND cd_customers.first_nm = popularities.first_nm
+    AND cd_customers.middle_nm = popularities.middle_nm
+WHERE
+  valid_to_dttm = '5999-01-01 00:00:00'
