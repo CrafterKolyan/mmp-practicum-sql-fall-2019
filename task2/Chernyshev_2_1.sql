@@ -1,5 +1,5 @@
 SELECT
-    COUNT(*) as cnt_only_one_edit
+    COUNT(*) AS cnt_only_one_edit
 FROM (
     SELECT
         customer_rk

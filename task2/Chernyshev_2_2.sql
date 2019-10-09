@@ -1,6 +1,6 @@
 SELECT
-    YEAR(dt) as year,
-    COUNT(*) as cnt_customers
+    YEAR(dt) AS year,
+    COUNT(*) AS cnt_customers
 FROM (
     SELECT
         ANY_VALUE(birth_dt) AS dt

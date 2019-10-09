@@ -1,6 +1,6 @@
 SELECT
     age,
-    COUNT(*) as cnt_customers
+    COUNT(*) AS cnt_customers
 FROM (
     SELECT
         TIMESTAMPDIFF(YEAR, birth_dt, CURDATE()) AS age
