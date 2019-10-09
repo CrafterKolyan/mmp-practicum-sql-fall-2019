@@ -1,10 +1,10 @@
-name: Main
+name: Tests
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  security_check:
-    name: Security check
+  equality_test:
+    name: Equality test
     runs-on: ubuntu-latest
     
     steps:
@@ -21,5 +21,11 @@ jobs:
         git checkout origin/master
         git merge --no-ff "$GITHUB_SHA"
 
-    - name: Run security check
-      run: util/security_check.py
+    - name: Installing MySQLdb
+      run: |
+        sudo apt install libmysqlclient-dev
+        pip3 install setuptools
+        pip3 install mysqlclient
+
+    - name: Run equality test
+      run: util/test_equality.py
