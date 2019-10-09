@@ -1,5 +1,3 @@
-USE srcdt;
-
 SELECT DISTINCT
 	CONCAT(YEAR(birth_dt) - YEAR(birth_dt) % 10, '-е') AS generation
 FROM

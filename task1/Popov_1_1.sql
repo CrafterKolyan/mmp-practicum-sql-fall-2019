@@ -1,5 +1,3 @@
-USE srcdt;
-
 SELECT
 	customer_rk,
 	CASE
