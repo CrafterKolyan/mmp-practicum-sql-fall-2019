@@ -52,8 +52,7 @@ for i in range(START_TASK, TOTAL_TASKS + 1):
                 result = get_sql_result(connection, sql_query)
             except Exception as e:
                 print(f"{filename} -> Exception: {e}")
-                if e[1] != 'Query was empty':
-                    exit_code = 1 
+                exit_code = 1 
             else:
                 filenames = groups.get(result, [])
                 filenames.append(filename)
