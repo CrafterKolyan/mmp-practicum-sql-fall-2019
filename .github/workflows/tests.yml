@@ -1,0 +1,31 @@
+name: Tests
+
+on: [push, pull_request]
+
+jobs:
+  equality_test:
+    name: Equality test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout to workspace
+      uses: actions/checkout@master
+
+    - name: Set bot's name and email
+      run: |
+        git config --global user.name "Github Action"
+        git config --global user.email "action@github.com"
+
+    - name: Emulating merge commit to origin/master
+      run: |
+        git checkout origin/master
+        git merge --no-ff "$GITHUB_SHA"
+
+    - name: Installing MySQLdb
+      run: |
+        sudo apt install libmysqlclient-dev
+        pip3 install setuptools
+        pip3 install mysqlclient
+
+    - name: Run equality test
+      run: util/test_equality.py
