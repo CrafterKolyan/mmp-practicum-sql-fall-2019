@@ -1,9 +1,9 @@
 SELECT
-    YEAR(dt) AS year,
+    YEAR(birth_dt) AS year,
     COUNT(*) AS cnt_customers
 FROM (
     SELECT
-        ANY_VALUE(birth_dt) AS dt
+        ANY_VALUE(birth_dt) AS birth_dt
     FROM
         cd_customers
     WHERE
@@ -14,4 +14,4 @@ FROM (
         COUNT(DISTINCT monthly_income_amt) = 2
     ) AS customers_with_2_salaries
 GROUP BY
-    YEAR(dt);
+    YEAR(birth_dt);
