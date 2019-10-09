@@ -8,5 +8,5 @@ FROM
     WHERE
         monthly_income_amt IN (50000 , 60000)
     GROUP BY customer_rk
-    HAVING COUNT(DISTINCT monthly_income_amt) > 1) AS grouped_birth_date
+    HAVING COUNT(DISTINCT monthly_income_amt) >= 2) AS grouped_birth_date
 GROUP BY birth_date;
