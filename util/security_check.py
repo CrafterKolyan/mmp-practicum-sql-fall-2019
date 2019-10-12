@@ -21,7 +21,8 @@ if not surname:
 	print(f"Пользователь '{user}' не имеет прав писать в данный репозиторий")
 	sys.exit(1)
 
-re_task_files = re.compile(fr'task([1-6])/(?:{"|".join(surname)})_\1_\d\.sql')
+surnames_re_text = fr'(?:{"|".join(surname)})'
+re_task_files = re.compile(fr'task([1-6])/{surnames_re_text}_\1_\d\.sql|hw[12]-advanced-pandas/{surnames_re_text}\.ipynb')
 
 file_diff = subprocess.check_output(["git", "diff", "origin/master", "--name-only"]).decode('utf-8').split('\n')
 file_diff = file_diff[:-1]
