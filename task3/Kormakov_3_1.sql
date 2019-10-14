@@ -8,7 +8,7 @@ SELECT
     popularity
 FROM
     srcdt.cd_customers
-        JOIN
+    LEFT JOIN
     (SELECT 
         first_nm, middle_nm, last_nm, COUNT(*) AS popularity
     FROM
