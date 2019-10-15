@@ -41,8 +41,6 @@ class TaskInfo:
         files = []
         for file in all_files:
             if re_files.fullmatch(file):
-                if file == "Lebed_3_2.sql":
-                    continue
                 files.append(file)
         return files
 
