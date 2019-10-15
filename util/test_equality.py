@@ -80,7 +80,7 @@ class TaskInfo:
                 groups[result] = filenames
             end_time = time.perf_counter()
             print(f"Time: {end_time - start_time} s")
-        
+        print("-" * 25)
         if len(groups) > 1:
             success = False
             print(f"{self.task}.{self.subtask} -> ERROR!")
@@ -89,18 +89,42 @@ class TaskInfo:
                 print(f"Group {group_num + 1} ({len(x)} rows, first row: {list(first_row)}):")
                 for user in groups[x]:
                     print(f"\t{user[:user.find('_')]}")
+            print()
+            print("Differences between groups:")
+            for i, group1 in enumerate(groups):
+                if self.ordered:
+                    group1 = frozenset(group1)
+                for j, group2 in enumerate(groups):
+                    if j <= i:
+                        continue
+                    if self.ordered:
+                        group2 = frozenset(group2)
+                    common_lines = group1.intersection(group2)
+                    group1_only = group1.difference(common_lines)
+                    group2_only = group2.difference(common_lines)
+                    for group1_example in sorted(group1_only):
+                        break
+                    for group2_example in sorted(group2_only):
+                        break
+                    print(f"Group {i + 1} vs Group {j + 1}:")
+                    print(f"\tCommon rows: {len(common_lines)} rows")
+                    print(f"\tGroup {i + 1} only: {len(group1_only)} rows, first row: {list(group1_example)}")
+                    print(f"\tGroup {j + 1} only: {len(group2_only)} rows, first row: {list(group2_example)}")
+                    if self.ordered and len(group1_only) == 0 and len(group2_only) == 0:
+                        print(f"\tOrder differs")
         elif len(groups) == 1:
             for x in groups:
                 first_row = self.get_first_row(x)
                 break
             print(f"{self.task}.{self.subtask} -> OK ({len(x)} rows, first row: {list(first_row)})")
+        print("-" * 25)
         sys.stdout.flush()
         return success
 
 
-connection = MySQLdb.connect(host = "trjudge.cs.msu.ru",
-                             user = "demo",
-                             passwd = "demo",
+connection = MySQLdb.connect(host = "localhost",
+                             user = "root",
+                             passwd = "root",
                              db = "srcdt",
                              charset = "utf8")
 
@@ -113,7 +137,7 @@ tasks = [
     TaskInfo(2, 2, skip=True, ordered=False),
     TaskInfo(2, 3, skip=True, ordered=True),
 
-    TaskInfo(3, 1, skip=True, ordered=False),
+    TaskInfo(3, 1, skip=False, ordered=False),
     TaskInfo(3, 2, skip=False, ordered=False),
     TaskInfo(3, 3, skip=False, ordered=False),
 
