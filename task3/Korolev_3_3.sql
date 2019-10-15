@@ -8,12 +8,7 @@ FROM (
     year_no
   FROM
     calendar
-  WHERE year_no >= YEAR((
-      SELECT
-        MIN(renewed_dt)
-      FROM
-        account_periods)
-    )) AS years
+  ) AS years
   LEFT JOIN (
     SELECT
       YEAR(renewed_dt) AS year_no,
