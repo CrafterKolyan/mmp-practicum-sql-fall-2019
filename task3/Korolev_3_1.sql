@@ -13,8 +13,8 @@ FROM
     FROM
       cd_customers
     WHERE
-      valid_from_dttm <= CURDATE()
-      AND valid_to_dttm >= CURDATE()
+      valid_from_dttm <= NOW()
+      AND valid_to_dttm >= NOW()
     GROUP BY
         last_nm,
         first_nm,
@@ -25,5 +25,5 @@ FROM
     AND cd_customers.first_nm = popularities.first_nm
     AND cd_customers.middle_nm = popularities.middle_nm
 WHERE
-  valid_from_dttm <= CURDATE()
-  AND valid_to_dttm >= CURDATE()
+  valid_from_dttm <= NOW()
+  AND valid_to_dttm >= NOW()

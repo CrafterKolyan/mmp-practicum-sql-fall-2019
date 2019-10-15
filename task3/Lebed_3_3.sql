@@ -1,39 +1,34 @@
 select
 	years.year,
-	sum(coalesce(curr.measure, 0) = 1) as open_deposites_count,
-	sum(coalesce(curr.measure, 0) = 1 and coalesce(prev.measure, 0) = 1) as prolongated_count,
-	sum(case
-			when curr.measure is not null and prev.measure is not null and curr.monthly_income_amt > 2 * prev.monthly_income_amt then 1
-			else 0 
-		end) as up50_prolongated_count
+	sum(ifnull(open_measure, 0)) as open_deposites_count,
+	sum(ifnull(prolongated_measure, 0)) as prolongated_deposites_count,
+	sum(ifnull(periods.opening_amt*2 > prev_periods.opening_amt*3, 0)) as up50_deposites_count
 from
 	(
 	select
 		distinct year(calendar_dt) as year
 	from
-		srcdt.calendar
-	where
-		year(calendar_dt) >= (
-		select
-			year(min(valid_from_dttm))
-		from
-			srcdt.cd_customers)) as years
+		srcdt.calendar) as years
 left join (
 	select
-		1 as measure,
-		srcdt.cd_customers.*
+		opening_amt,
+		account_rk,
+		account_renewal_cnt,
+		account_renewal_cnt = 1 as open_measure,
+		account_renewal_cnt >= 2 as prolongated_measure,
+		renewed_dt,
+		expiration_dt
 	from
-		srcdt.cd_customers ) as curr on
-	year(curr.valid_from_dttm) = years.year
+		srcdt.account_periods) as periods on
+	years.year = year(periods.renewed_dt)
 left join (
 	select
-		1 as measure,
-		srcdt.cd_customers.*
+		opening_amt,
+		account_rk,
+		account_renewal_cnt
 	from
-		srcdt.cd_customers ) as prev on
-	prev.customer_rk = curr.customer_rk
-	and timestampdiff(second,
-	prev.valid_to_dttm,
-	curr.valid_from_dttm) = 1
+		srcdt.account_periods) as prev_periods on
+	prev_periods.account_rk = periods.account_rk
+	and prev_periods.account_renewal_cnt = periods.account_renewal_cnt - 1
 group by
 	years.year

@@ -1,6 +1,6 @@
 select
 	dates.calendar_dt,
-	sum(coalesce(customers.measure, 0)) as open_deposites_count
+	sum(ifnull(measure, 0)) as open_deposites_count
 from
 	(
 	select
@@ -15,11 +15,15 @@ from
 			srcdt.cd_customers) and curdate()) as dates
 left join (
 	select
-		1 as measure,
-		valid_from_dttm,
-		valid_to_dttm
+		count(*) as measure,
+		renewed_dt,
+		expiration_dt
 	from
-		srcdt.cd_customers) as customers on
-	dates.calendar_dt between customers.valid_from_dttm and customers.valid_to_dttm
+		srcdt.account_periods
+	group by
+		renewed_dt,
+		expiration_dt) as periods on
+	dates.calendar_dt >= renewed_dt
+	and dates.calendar_dt < expiration_dt
 group by
 	dates.calendar_dt
