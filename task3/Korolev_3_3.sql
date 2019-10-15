@@ -1,8 +1,8 @@
 SELECT DISTINCT
   years.year_no,
-  COALESCE(deposits, 0) AS deposits_openings,
-  COALESCE(prolongations, 0) AS prolongations,
-  COALESCE(prolongations_with_50_percent_boost, 0) AS prolongations_with_50_percent_boost
+  IFNULL(deposits, 0) AS deposits_openings,
+  IFNULL(prolongations, 0) AS prolongations,
+  IFNULL(prolongations_with_50_percent_boost, 0) AS prolongations_with_50_percent_boost
 FROM (
   SELECT DISTINCT
     year_no
