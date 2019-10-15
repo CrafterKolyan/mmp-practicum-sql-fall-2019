@@ -1,20 +1,14 @@
 select
 	years.year,
-	sum(coalesce(open_measure, 0)) as open_deposites_count,
-	sum(coalesce(prolongated_measure, 0)) as prolongated_deposites_count,
-	sum(coalesce(periods.opening_amt*2 > prev_periods.opening_amt*3, 0)) as up50_deposites_count
+	sum(ifnull(open_measure, 0)) as open_deposites_count,
+	sum(ifnull(prolongated_measure, 0)) as prolongated_deposites_count,
+	sum(ifnull(periods.opening_amt*2 > prev_periods.opening_amt*3, 0)) as up50_deposites_count
 from
 	(
 	select
 		distinct year(calendar_dt) as year
 	from
-		srcdt.calendar
-	where
-		year(calendar_dt) >= (
-		select
-			year(min(renewed_dt))
-		from
-			srcdt.account_periods)) as years
+		srcdt.calendar) as years
 left join (
 	select
 		opening_amt,

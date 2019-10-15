@@ -1,6 +1,6 @@
 select
 	dates.calendar_dt,
-	sum(coalesce(measure, 0)) as open_deposites_count
+	sum(ifnull(measure, 0)) as open_deposites_count
 from
 	(
 	select
@@ -23,6 +23,7 @@ left join (
 	group by
 		renewed_dt,
 		expiration_dt) as periods on
-	dates.calendar_dt >= renewed_dt and dates.calendar_dt < expiration_dt
+	dates.calendar_dt >= renewed_dt
+	and dates.calendar_dt < expiration_dt
 group by
 	dates.calendar_dt
