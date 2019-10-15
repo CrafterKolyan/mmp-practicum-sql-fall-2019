@@ -102,6 +102,8 @@ class TaskInfo:
                     common_lines = group1.intersection(group2)
                     group1_only = group1.difference(common_lines)
                     group2_only = group2.difference(common_lines)
+                    group1_example = []
+                    group2_example = []
                     for group1_example in sorted(group1_only):
                         break
                     for group2_example in sorted(group2_only):
