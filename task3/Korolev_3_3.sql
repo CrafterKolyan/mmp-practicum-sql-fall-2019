@@ -1,4 +1,4 @@
-SELECT DISTINCT
+SELECT
   years.year_no,
   IFNULL(deposits, 0) AS deposits_openings,
   IFNULL(prolongations, 0) AS prolongations,
