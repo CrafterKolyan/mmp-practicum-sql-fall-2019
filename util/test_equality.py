@@ -139,9 +139,9 @@ tasks = [
     TaskInfo(2, 2, skip=True, ordered=False),
     TaskInfo(2, 3, skip=True, ordered=True),
 
-    TaskInfo(3, 1, skip=False, ordered=False),
     TaskInfo(3, 2, skip=False, ordered=False),
     TaskInfo(3, 3, skip=False, ordered=False),
+    TaskInfo(3, 1, skip=False, ordered=False),
 
     TaskInfo(4, 1, skip=False, ordered=True),
     TaskInfo(4, 2, skip=False, ordered=False),
