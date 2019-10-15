@@ -1,6 +1,6 @@
 SELECT
   calendar_dt,
-  COALESCE(SUM(total_accounts), 0) AS number_opened_accounts
+  IFNULL(SUM(total_accounts), 0) AS number_opened_accounts
 FROM
   calendar
   LEFT JOIN
