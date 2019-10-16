@@ -13,5 +13,5 @@ WHERE
     calendar_dt BETWEEN (SELECT 
             MIN(renewed_dt)
         FROM
-            srcdt.account_periods) AND NOW()
+            srcdt.account_periods) AND CURDATE()
 GROUP BY calendar_dt
