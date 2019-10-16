@@ -11,5 +11,5 @@ WHERE
         WHERE
             monthly_income_amt IN (50000 , 60000)
         GROUP BY customer_rk
-        HAVING COUNT(*) = 2)
+        HAVING COUNT(DISTINCT monthly_income_amt) = 2)
 GROUP BY birth_year
