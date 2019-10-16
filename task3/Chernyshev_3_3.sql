@@ -1,18 +1,14 @@
 SELECT
-    c.year_no,
-    COUNT(ap.account_renewal_cnt = 1) AS new,
-    COUNT(ap.account_renewal_cnt > 1) AS prolong,
-    COUNT(1.5 * prev_ap.opening_amt < ap.opening_amt) AS big_prolong
+    YEAR(ap.renewed_dt) AS year,
+    SUM(ap.account_renewal_cnt = 1) AS new,
+    SUM(ap.account_renewal_cnt > 1) AS prolong,
+    SUM(1.5 * prev_ap.opening_amt < ap.opening_amt) AS big_prolong
 FROM
-    calendar AS c
-LEFT JOIN
     account_periods AS ap
-ON
-    YEAR(ap.renewed_dt) = c.year_no
-INNER JOIN
+LEFT JOIN
     account_periods prev_ap
 ON
-    prev_ap.expiration_dt = ap.renewed_dt AND
-    ap.account_rk = prev_ap.account_rk
+    prev_ap.valid_to_dttm = ap.valid_from_dttm AND
+    prev_ap.account_rk = ap.account_rk
 GROUP BY
-    c.year_no;
+    YEAR(ap.renewed_dt);
