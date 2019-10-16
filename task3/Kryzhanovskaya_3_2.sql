@@ -5,7 +5,7 @@ LEFT JOIN (
 	FROM account_periods
 	GROUP BY renewed_dt, expiration_dt
 ) b
-ON calendar_dt >= renewed_dt and calendar_dt < expiration_dt
+ON calendar_dt >= renewed_dt AND calendar_dt < expiration_dt
 WHERE 
 	calendar_dt <= CURDATE()  
 	AND calendar_dt >= (
