@@ -13,7 +13,7 @@ LEFT JOIN
 (SELECT YEAR(table_1.renewed_dt) as dep_year,  COUNT(*) as big_dep
 FROM srcdt.account_periods as table_1 INNER JOIN srcdt.account_periods as table_2 
 ON table_1.account_rk = table_2.account_rk
-	AND table_1.account_renewal_cnt + 1 = table_2.account_renewal_cnt
+	AND table_1.account_renewal_cnt - 1 = table_2.account_renewal_cnt
 	AND table_1.opening_amt > 1.5 * table_2.opening_amt
 GROUP BY dep_year
 ) big_deps
