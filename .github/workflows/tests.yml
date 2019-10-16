@@ -1,0 +1,42 @@
+name: Tests
+
+on: [push]
+
+jobs:
+  equality_test:
+    name: Equality test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout to workspace
+      uses: actions/checkout@master
+
+    - name: Set bot's name and email
+      run: |
+        git config --global user.name "Github Action"
+        git config --global user.email "action@github.com"
+
+    - name: Emulating merge commit to origin/master
+      run: |
+        git checkout origin/master
+        git merge --no-ff "$GITHUB_SHA"
+
+    - name: Cloning data
+      run: |
+        git clone https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019-db-dump.git data
+        cd data
+        cat trjudge_sql_dump_2019.zip.part? > trjudge_sql_dump_2019.zip
+        unzip trjudge_sql_dump_2019.zip
+        cd ..
+
+    - name: Initialize database
+      run: mysql -uroot -proot < ./data/trjudge.sql
+
+    - name: Installing MySQLdb
+      run: |
+        sudo apt install libmysqlclient-dev
+        pip3 install setuptools
+        pip3 install mysqlclient
+
+    - name: Run equality test
+      run: util/test_equality.py
