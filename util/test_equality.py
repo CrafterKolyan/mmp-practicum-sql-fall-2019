@@ -5,9 +5,11 @@ import os
 import re
 import sys
 import time
+from multiset import FrozenMultiset
 
 PROJECT_DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 exit_code = 0
+
 
 def get_sql_result(connection, sql_query):
     cursor = connection.cursor()
@@ -72,7 +74,7 @@ class TaskInfo:
             try:
                 result = get_sql_result(connection, sql_query)
                 if not self.ordered:
-                    result = frozenset(result)
+                    result = FrozenMultiset(result)
             except Exception as e:
                 print(f"{filename} -> Exception: {e}")
                 success = False 
@@ -97,12 +99,12 @@ class TaskInfo:
             print("Differences between groups:")
             for i, group1 in enumerate(groups):
                 if self.ordered:
-                    group1 = frozenset(group1)
+                    group1 = FrozenMultiset(group1)
                 for j, group2 in enumerate(groups):
                     if j <= i:
                         continue
                     if self.ordered:
-                        group2 = frozenset(group2)
+                        group2 = FrozenMultiset(group2)
                     common_lines = group1.intersection(group2)
                     group1_only = group1.difference(common_lines)
                     group2_only = group2.difference(common_lines)
