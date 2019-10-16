@@ -6,7 +6,7 @@ FROM
     cd_customers cc
 INNER JOIN (
     SELECT
-        CONCAT_WS(' ', first_nm, last_nm, middle_nm) AS name,
+        CONCAT_WS(' ', last_nm, first_nm, middle_nm) AS name,
         COUNT(*) AS amount
     FROM
         cd_customers
