@@ -10,6 +10,8 @@ TOTAL_TASKS = 6
 PROJECT_DIRECTORY = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_WORKERS = 20
 
+exit_code = 0
+
 def get_sql_result(connection, sql_query):
     cursor = connection.cursor()
     cursor.execute(sql_query)
@@ -42,30 +44,21 @@ for i in range(2, TOTAL_TASKS):
                 with open(os.path.join(folder, file), 'r', encoding='utf-8') as f:
                     sql_queries.append("".join(f.readlines()).replace(';', ''))
         groups = {}
-        print(f"Fetching...", end="\r")
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-            results = {executor.submit(get_sql_result, connection, sql_query): filename for sql_query, filename in zip(sql_queries, current_files)}
-            try: 
-                for future_result in as_completed(results):
-                    filename = results[future_result]
-                    try:
-                        result = future_result.result()
-                    except Exception as e:
-                        print(f"{filename} -> Exception: {e}")
-                    else:
-                        print(" " * 50, end="\r")
-                        print(f"Fetched {filename}", end="\r")
-                        filenames = groups.get(result, [])
-                        filenames.append(filename)
-                        groups[result] = filenames
-            except BaseException as e:
-                print("Cancelling jobs")
-                for result in results:
-                    if not result.running():
-                        result.cancel()
-                sys.exit(0)
+        for sql_query, filename in zip(sql_queries, current_files):
+            print(" " * 50, end="\r")
+            print(f"Fetching {filename}", end="\r")
+            sys.stdout.flush()
+            try:
+                result = get_sql_result(connection, sql_query)
+            except Exception as e:
+                print(f"{filename} -> Exception: {e}")
+            else:
+                filenames = groups.get(result, [])
+                filenames.append(filename)
+                groups[result] = filenames
         print(" " * 50, end="\r")
         if len(groups) > 1:
+            exit_code = 1
             print(f"{i}.{subtask_number} -> ERROR!")
             for group_num, x in enumerate(groups):
                 print(f"Group {group_num + 1} ({len(x)} rows, first row: {list(x[0])}):")
@@ -73,9 +66,10 @@ for i in range(2, TOTAL_TASKS):
                     print(f"\t{user[:user.find('_')]}")
         elif len(groups) == 1:
             print(f"{i}.{subtask_number} -> OK")
+        sys.stdout.flush()
         total_files += len(sql_queries)
         subtask_number += 1
-    break
 
 
 connection.close()
+sys.exit(exit_code)
