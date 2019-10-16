@@ -41,6 +41,8 @@ class TaskInfo:
         files = []
         for file in all_files:
             if re_files.fullmatch(file):
+                if file == "Chernyshev_3_2.sql" or file == "Tashevtsev_3_2.sql":
+                    continue
                 files.append(file)
         return files
 
