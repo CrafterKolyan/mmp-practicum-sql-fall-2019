@@ -11,7 +11,7 @@ FROM
         INNER JOIN
     (SELECT 
         CONCAT(first_nm, ' ', middle_nm, ' ', last_nm) AS nm,
-            COUNT(DISTINCT customer_rk) AS nm_number
+            COUNT(*) AS nm_number
     FROM
         srcdt.cd_customers
     WHERE
