@@ -1,7 +1,7 @@
-SELECT calendar_dt, IFNULL(SUM(acc_cnt), 0) as acc_cnt
+SELECT calendar_dt, IFNULL(SUM(acc_cnt), 0) AS acc_cnt
 FROM calendar a
 LEFT JOIN (
-	SELECT renewed_dt, expiration_dt, COUNT(*) as acc_cnt
+	SELECT renewed_dt, expiration_dt, COUNT(*) AS acc_cnt
 	FROM account_periods
 	GROUP BY renewed_dt, expiration_dt
 ) b
