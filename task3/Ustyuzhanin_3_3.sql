@@ -28,7 +28,7 @@ LEFT JOIN
 			FROM
 				srcdt.account_periods
 		) as snd
-		ON fst.acc = snd.acc AND fst.account_renewal_cnt + 1 = snd.account_renewal_cnt AND snd.opening_amt > 1.5 * fst.opening_amt
+		ON fst.acc = snd.acc AND fst.account_renewal_cnt = snd.account_renewal_cnt + 1  AND fst.opening_amt > 1.5 * snd.opening_amt
     )
     GROUP BY
 		years
