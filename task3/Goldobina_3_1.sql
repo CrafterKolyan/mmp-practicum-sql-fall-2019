@@ -3,7 +3,7 @@ SELECT t1.customer_rk,
        t2.count
 FROM srcdt.cd_customers AS t1
 INNER JOIN (
-    SELECT concat_ws(' ', first_nm, middle_nm, last_nm) AS name,
+    SELECT concat_ws(' ', last_nm, first_nm, middle_nm) AS name,
            count(*)                                     AS count
     FROM srcdt.cd_customers
     WHERE valid_to_dttm = '5999-01-01'
