@@ -80,7 +80,7 @@ class TaskInfo:
                 groups[result] = filenames
             end_time = time.perf_counter()
             print(f"Time: {end_time - start_time} s")
-        
+
         if len(groups) > 0:
             print("-" * 25)
         if len(groups) > 1:
@@ -134,13 +134,13 @@ connection = MySQLdb.connect(host = "localhost",
                              charset = "utf8")
 
 tasks = [
-    TaskInfo(1, 1, skip=True, ordered=False),
-    TaskInfo(1, 2, skip=True, ordered=False),
-    TaskInfo(1, 3, skip=True, ordered=True),
+    TaskInfo(1, 1, skip=False, ordered=False),
+    TaskInfo(1, 2, skip=False, ordered=False),
+    TaskInfo(1, 3, skip=False, ordered=True),
 
-    TaskInfo(2, 1, skip=True, ordered=False),
-    TaskInfo(2, 2, skip=True, ordered=False),
-    TaskInfo(2, 3, skip=True, ordered=True),
+    TaskInfo(2, 1, skip=False, ordered=False),
+    TaskInfo(2, 2, skip=False, ordered=False),
+    TaskInfo(2, 3, skip=False, ordered=True),
 
     TaskInfo(3, 2, skip=False, ordered=False),
     TaskInfo(3, 3, skip=False, ordered=False),
