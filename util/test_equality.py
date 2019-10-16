@@ -80,7 +80,9 @@ class TaskInfo:
                 groups[result] = filenames
             end_time = time.perf_counter()
             print(f"Time: {end_time - start_time} s")
-        print("-" * 25)
+        
+        if len(groups) > 0:
+            print("-" * 25)
         if len(groups) > 1:
             success = False
             print(f"{self.task}.{self.subtask} -> ERROR!")
@@ -119,7 +121,8 @@ class TaskInfo:
                 first_row = self.get_first_row(x)
                 break
             print(f"{self.task}.{self.subtask} -> OK ({len(x)} rows, first row: {list(first_row)})")
-        print("-" * 25)
+        if len(groups) > 0:
+            print("-" * 25)
         sys.stdout.flush()
         return success
 
