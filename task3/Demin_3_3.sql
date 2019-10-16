@@ -1,8 +1,9 @@
-SELECT prol.dt_year, prol.cnt_prolonged, prol_more_50.cnt_more_50,
-	CASE 
+SELECT prol.dt_year,
+       CASE 
 		WHEN opened.cnt_opened > 0 THEN opened.cnt_opened
         ELSE 0
-	END AS cnt_opened
+	END AS cnt_opened,
+       prol.cnt_prolonged, prol_more_50.cnt_more_50
 FROM 
 (
 	SELECT count(*) as cnt_prolonged, YEAR(valid_from_dttm) as dt_year
