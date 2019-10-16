@@ -21,6 +21,17 @@ jobs:
         git checkout origin/master
         git merge --no-ff "$GITHUB_SHA"
 
+    - name: Cloning data
+      run: |
+        git clone https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019-db-dump.git data
+        cd data
+        cat trjudge_sql_dump_2019.zip.part? > trjudge_sql_dump_2019.zip
+        unzip trjudge_sql_dump_2019.zip
+        cd ..
+
+    - name: Initialize database
+      run: mysql -uroot -proot < ./data/trjudge.sql
+
     - name: Installing MySQLdb
       run: |
         sudo apt install libmysqlclient-dev
