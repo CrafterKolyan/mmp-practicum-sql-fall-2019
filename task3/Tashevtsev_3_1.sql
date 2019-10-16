@@ -5,13 +5,13 @@ SELECT
 FROM (
 	SELECT
 		customer_rk,
-		CONCAT(first_nm, ' ', middle_nm, ' ', last_nm) as NAME
+		CONCAT(last_nm, ' ', first_nm, ' ', middle_nm) as NAME
     FROM cd_customers
     WHERE valid_to_dttm = '5999-01-01 00:00:00'
 ) as cust
 INNER JOIN (
 	SELECT
-		CONCAT(first_nm, ' ', middle_nm, ' ', last_nm) as NAME,
+		CONCAT(last_nm, ' ', first_nm, ' ', middle_nm) as NAME,
 		COUNT(*) as NAME_COUNT
 	FROM cd_customers
 	WHERE valid_to_dttm = '5999-01-01 00:00:00'
