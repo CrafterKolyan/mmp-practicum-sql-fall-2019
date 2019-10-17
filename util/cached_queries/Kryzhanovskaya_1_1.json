@@ -1,0 +1,1 @@
+{"sql": "SELECT \n    customer_rk,\n    CASE\n        WHEN middle_nm LIKE '%\u041d\u0410' THEN 'F'\n        WHEN middle_nm LIKE '%\u0418\u0427' THEN 'M'\n    END AS gender\nFROM\n    cd_customers\nWHERE  \n\tvalid_to_dttm = '5999-01-01 00:00:00'", "valid_until": 253402300800.0, "rows": 1338447, "hash": 7811714172663409859, "data": "(3, 'M')"}
