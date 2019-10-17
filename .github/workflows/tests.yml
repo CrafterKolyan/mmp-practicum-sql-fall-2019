@@ -32,11 +32,11 @@ jobs:
     - name: Initialize database
       run: mysql -uroot -proot < ./data/trjudge.sql
 
-    - name: Installing MySQLdb, multiset and pytz
+    - name: Installing MySQLdb and pytz
       run: |
         sudo apt install libmysqlclient-dev
         pip3 install setuptools
-        pip3 install mysqlclient multiset pytz
+        pip3 install mysqlclient pytz
 
     - name: Run equality test
       run: util/test_equality.py
