@@ -1,0 +1,1 @@
+{"sql": "select count(*) as n_unaltered_clients\nfrom (\n     select 1\n     from srcdt.cd_customers as cd_customers\n     group by cd_customers.customer_rk\n     having count(*) = 1\n) as _\n", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

@@ -1,0 +1,1 @@
+{"sql": "SELECT\n\tcount(unique_set)\nFROM\n(\n\tSELECT \n\t\tcustomer_rk as unique_set\n\tFROM \n\t\tsrcdt.cd_customers\n\tGROUP BY\n\t\tcustomer_rk\n\tHAVING\n\t\tcount(customer_rk) = 1\n) as sql_kostil\n", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
