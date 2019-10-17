@@ -27,7 +27,7 @@ def get_cached_query(file_path, content):
     if not os.path.isfile(full_path):
         return {}
     cached_query = json.load(open(full_path))
-    valid_until = datetime.datetime.fromtimestamp(cached_query['valid_until'])
+    valid_until = datetime.datetime.fromtimestamp(cached_query['valid_until'], pytz.timezone('Europe/Moscow'))
     if valid_until < get_current_msk_time() or cached_query['sql'] != content:
         os.remove(full_path)
         return {}
@@ -41,7 +41,7 @@ def set_cached_query(file_path, content, result, valid_for=None):
         valid_until = datetime.datetime.combine(valid_until.date(), datetime.time.min)
         valid_until += datetime.timedelta(minutes=5)
     else:
-        valid_until = datetime.datetime.max - datetime.timedelta(days=1)
+        valid_until = get_current_msk_time() + datetime.timedelta(days=365 * 15)
     cached_query = {
         'sql': content,
         'valid_until': valid_until.timestamp(),

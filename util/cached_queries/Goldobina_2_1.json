@@ -1,1 +1,0 @@
-{"sql": "SELECT count(*) AS number\nFROM (SELECT count(*) AS num_records\n      FROM srcdt.cd_customers\n      GROUP BY customer_rk) AS t\nWHERE num_records = 1\n", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

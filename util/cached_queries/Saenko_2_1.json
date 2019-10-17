@@ -1,1 +1,0 @@
-{"sql": "SELECT COUNT(*) FROM\n(\nSELECT customer_rk FROM cd_customers GROUP BY customer_rk HAVING COUNT(*) = 1\n)\na", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

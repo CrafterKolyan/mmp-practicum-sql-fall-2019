@@ -1,1 +1,0 @@
-{"sql": "select\n\tcustomer_rk,\n\tcase\n\t\twhen middle_nm like \"%\u041d\u0410\" then \"F\"\n\t\twhen middle_nm like \"%\u0418\u0427\" then \"M\"\n\tend as gender\nfrom\n\tsrcdt.cd_customers\nwhere\n\tvalid_to_dttm = \"5999-01-01 00:00:00\"\n\n", "valid_until": 253402300800.0, "rows": 1338447, "hash": 7811714172663409859, "data": "(3, 'M')"}

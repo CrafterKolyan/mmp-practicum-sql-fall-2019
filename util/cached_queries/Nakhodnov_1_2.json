@@ -1,1 +1,0 @@
-{"sql": "select cd_customers.monthly_income_amt\nfrom srcdt.cd_customers as cd_customers\nwhere 2014 >= year(cd_customers.valid_from_dttm) and year(cd_customers.valid_to_dttm) >= 2014\norder by cd_customers.monthly_income_amt desc\nlimit 10", "valid_until": 253402300800.0, "rows": 10, "hash": 5754836293637237105, "data": "(Decimal('352000.0000000'),)"}
