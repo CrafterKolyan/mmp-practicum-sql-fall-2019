@@ -1,0 +1,1 @@
+{"sql": "select\n    timestampdiff(year, cd_customers.birth_dt, current_date()) as age,\n    count(*)\nfrom srcdt.cd_customers as cd_customers\nwhere cd_customers.valid_to_dttm = '5999-01-01 00:00:00'\ngroup by age\nhaving age between 15 and 80\norder by age desc\n", "valid_until": 1571443500.0, "rows": 66, "hash": 4131312754942392841, "data": "(80, 14681)"}

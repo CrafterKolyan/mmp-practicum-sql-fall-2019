@@ -1,0 +1,1 @@
+{"sql": "SELECT count(*) AS cnt\nFROM (\n\tSELECT customer_rk\n\tFROM cd_customers\n\tGROUP BY customer_rk\n\tHAVING count(customer_rk) = 1\n) AS a", "valid_until": 2044388408.022229, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
