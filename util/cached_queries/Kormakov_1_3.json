@@ -1,1 +1,0 @@
-{"sql": "SELECT DISTINCT\n    CONCAT(TRUNCATE(YEAR(birth_dt), - 1), '-e') AS generation\nFROM\n    srcdt.cd_customers\nWHERE\n    valid_to_dttm = '5999-01-01 00:00:00'\n        AND birth_dt IS NOT NULL\nORDER BY generation DESC\n", "valid_until": 253402300800.0, "rows": 12, "hash": -2803838727534557930, "data": "('2010-e',)"}
