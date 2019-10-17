@@ -41,7 +41,7 @@ def set_cached_query(file_path, content, result, valid_for=None):
         valid_until = datetime.datetime.combine(valid_until.date(), datetime.time.min)
         valid_until += datetime.timedelta(minutes=5)
     else:
-        valid_until = datetime.datetime.max
+        valid_until = datetime.datetime.max - datetime.timedelta(days=1)
     cached_query = {
         'sql': content,
         'valid_until': valid_until.timestamp(),
