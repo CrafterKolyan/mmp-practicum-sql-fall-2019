@@ -1,0 +1,1 @@
+{"sql": "SELECT DISTINCT\n\tconcat(TRUNCATE(YEAR(birth_dt), -1), '-\u0435') AS generation\nFROM \n\tcd_customers\nWHERE \n\tvalid_to_dttm = '5999-01-01 00:00:00'\nORDER BY \n\tgeneration DESC\n", "valid_until": 253402300800.0, "rows": 12, "hash": -6865994916731896062, "data": "('2010-\u0435',)"}
