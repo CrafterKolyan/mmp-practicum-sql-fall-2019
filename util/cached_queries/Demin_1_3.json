@@ -1,0 +1,1 @@
+{"sql": "SELECT CONCAT(SUBSTR(birth_dt, 1, 3), '0-e') as generation\nFROM cd_customers\nWHERE valid_to_dttm = '5999-01-01 00:00:00'\nGROUP BY generation DESC", "valid_until": 2044392030.329027, "rows": 12, "hash": -8277624064340075629, "data": "('2010-e',)"}
