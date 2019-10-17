@@ -18,14 +18,14 @@ tasks = [
     TaskInfo(4, 3, skip=False, ordered=False, valid_for='day'),
 
     TaskInfo(1, 1, skip=True, ordered=False),
-    TaskInfo(1, 2, skip=False, ordered=False),
-    TaskInfo(1, 3, skip=False, ordered=True),
+    TaskInfo(1, 2, skip=True, ordered=False),
+    TaskInfo(1, 3, skip=True, ordered=True),
 
     TaskInfo(2, 1, skip=True, ordered=False),
-    TaskInfo(2, 2, skip=False, ordered=False),
-    TaskInfo(2, 3, skip=False, ordered=True, valid_for='day'),
+    TaskInfo(2, 2, skip=True, ordered=False),
+    TaskInfo(2, 3, skip=True, ordered=True, valid_for='day'),
 
-    TaskInfo(3, 1, skip=True, ordered=False),
+    TaskInfo(3, 1, skip=False, ordered=False),
     TaskInfo(3, 2, skip=True, ordered=False, valid_for='day'),
     TaskInfo(3, 3, skip=True, ordered=False),
 ]
