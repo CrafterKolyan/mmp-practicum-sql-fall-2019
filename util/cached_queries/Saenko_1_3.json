@@ -1,0 +1,1 @@
+{"sql": "SELECT DISTINCT concat( substr(YEAR(birth_dt), 1, 3), '0-\u0435' ) AS birth_decade \nFROM cd_customers\nWHERE valid_to_dttm = '5999-01-01 00:00:00'\nORDER BY birth_decade DESC", "valid_until": 2044393874.896582, "rows": 12, "hash": -1001555936563509550, "data": "('2010-\u0435',)"}
