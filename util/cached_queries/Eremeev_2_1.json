@@ -1,0 +1,1 @@
+{"sql": "SELECT \n\tCOUNT(customer_rk) AS Number_of_customers\nFROM \n\t(SELECT \n\t\tcustomer_rk \n\t FROM cd_customers \n\t GROUP BY customer_rk\n\t HAVING count(customer_rk) = 1) AS temp\n", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

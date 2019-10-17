@@ -1,0 +1,1 @@
+{"sql": "SELECT\n    COUNT(*) AS cnt_only_one_edit\nFROM (\n    SELECT\n        customer_rk\n    FROM\n        cd_customers\n    GROUP BY\n        customer_rk\n    HAVING\n        COUNT(*) = 1\n    ) AS only_one_edit\n", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

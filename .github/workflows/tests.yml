@@ -18,14 +18,40 @@ jobs:
 
     - name: Emulating merge commit to origin/master
       run: |
-        git checkout origin/master
+        git checkout -t origin/master
         git merge --no-ff "$GITHUB_SHA"
 
-    - name: Installing MySQLdb
+    - name: Cloning data
+      run: |
+        git clone https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019-db-dump.git data
+        cd data
+        cat trjudge_sql_dump_2019.zip.part? > trjudge_sql_dump_2019.zip
+        unzip trjudge_sql_dump_2019.zip
+        cd ..
+
+    - name: Initialize database
+      run: mysql -uroot -proot < ./data/trjudge.sql
+
+    - name: Installing MySQLdb, multiset and pytz
       run: |
         sudo apt install libmysqlclient-dev
         pip3 install setuptools
-        pip3 install mysqlclient
+        pip3 install mysqlclient multiset pytz
 
     - name: Run equality test
       run: util/test_equality.py
+
+    - name: Commit cached queries
+      if: always()
+      run: |
+        git add util/cached_queries
+        git commit -m "[AUTO-TESTS] Cache query results"
+        git fetch -p
+        git rebase origin/master --merge --strategy-option=ours
+
+    - name: Push changes
+      if: always()
+      uses: ad-m/github-push-action@master
+      with:
+        branch: master
+        github_token: ${{ secrets.GITHUB_TOKEN }}

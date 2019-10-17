@@ -1,0 +1,1 @@
+{"sql": "SELECT \n    COUNT(*) AS not_changed_persons_amnt\nFROM\n    (SELECT \n        customer_rk\n    FROM\n        srcdt.cd_customers\n    GROUP BY customer_rk\n    HAVING COUNT(customer_rk) = 1) AS not_changed_persons", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
