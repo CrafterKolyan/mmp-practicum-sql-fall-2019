@@ -49,7 +49,7 @@ jobs:
         git fetch -p
         git rebase origin/master --merge --strategy-option=ours
 
-    - name: Push changes
+    - name: Push cached queries to origin/master
       if: always()
       uses: ad-m/github-push-action@v.0.4.0
       with:
