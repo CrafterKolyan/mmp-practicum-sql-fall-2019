@@ -1,1 +1,1 @@
-{"sql": "SELECT DISTINCT\n\tconcat(floor(year(birth_dt)/10)*10, '-e') as generation\nFROM\n\tsrcdt.cd_customers\nWHERE\n\tvalid_to_dttm = '5999-01-01 00:00:00'\nORDER BY\n\tgeneration DESC", "valid_until": 253402300800.0, "rows": 12, "hash": -2803838727534557930, "data": "('2010-e',)"}
+{"sql": "SELECT DISTINCT\n\tconcat(floor(year(birth_dt)/10)*10, '-e') as generation\nFROM\n\tsrcdt.cd_customers\nWHERE\n\tvalid_to_dttm = '5999-01-01 00:00:00'\nORDER BY\n\tgeneration DESC", "valid_until": 2044393945.787184, "rows": 12, "hash": -7220435877048570398, "data": "('2010-e',)"}

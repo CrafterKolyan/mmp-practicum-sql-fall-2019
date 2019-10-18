@@ -1,1 +1,1 @@
-{"sql": "SELECT COUNT(*) AS numb\nFROM\n(\nSELECT customer_rk AS d\nFROM srcdt.cd_customers\nGROUP BY customer_rk\nHAVING COUNT(customer_rk) = 1) AS cust", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
+{"sql": "SELECT COUNT(*) AS numb\nFROM\n(\nSELECT customer_rk AS d\nFROM srcdt.cd_customers\nGROUP BY customer_rk\nHAVING COUNT(customer_rk) = 1) AS cust", "valid_until": 2044388409.950497, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

@@ -1,1 +1,1 @@
-{"sql": "SELECT \n    COUNT(*)\nFROM\n    (SELECT \n        customer_rk\n    FROM\n        cd_customers\n    GROUP BY customer_rk\n    HAVING COUNT(*) = 1) one_row_customers", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
+{"sql": "SELECT \n    COUNT(*)\nFROM\n    (SELECT \n        customer_rk\n    FROM\n        cd_customers\n    GROUP BY customer_rk\n    HAVING COUNT(*) = 1) one_row_customers", "valid_until": 2044388405.193617, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

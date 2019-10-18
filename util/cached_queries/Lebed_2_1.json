@@ -1,1 +1,1 @@
-{"sql": "select\n\tcount(*)\nfrom\n\t(\n\tselect\n\t\tcustomer_rk\n\tfrom\n\t\tsrcdt.cd_customers\n\tgroup by\n\t\tcustomer_rk\n\thaving\n\t\tcount(customer_rk) = 1) as const_customers", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
+{"sql": "select\n\tcount(*)\nfrom\n\t(\n\tselect\n\t\tcustomer_rk\n\tfrom\n\t\tsrcdt.cd_customers\n\tgroup by\n\t\tcustomer_rk\n\thaving\n\t\tcount(customer_rk) = 1) as const_customers", "valid_until": 2044388408.977201, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

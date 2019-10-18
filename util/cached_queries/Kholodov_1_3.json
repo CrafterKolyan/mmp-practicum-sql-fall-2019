@@ -1,1 +1,1 @@
-{"sql": "SELECT DISTINCT \n\tCONCAT(SUBSTRING(birth_dt, 1, 3), '0-e') as generation \nFROM cd_customers\nWHERE valid_to_dttm = '5999-01-01'\nORDER BY generation DESC", "valid_until": 253402300800.0, "rows": 12, "hash": -2803838727534557930, "data": "('2010-e',)"}
+{"sql": "SELECT DISTINCT \n\tCONCAT(SUBSTRING(birth_dt, 1, 3), '0-e') as generation \nFROM cd_customers\nWHERE valid_to_dttm = '5999-01-01'\nORDER BY generation DESC", "valid_until": 2044393496.677587, "rows": 12, "hash": -7220435877048570398, "data": "('2010-e',)"}
