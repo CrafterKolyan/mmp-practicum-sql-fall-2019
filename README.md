@@ -9,7 +9,7 @@
 | [Задание 3](https://docs.google.com/presentation/d/e/2PACX-1vRCoUr_QIUPG4k52Yzh_3nk86jCAmTuFUjU7iJG4B_gwrcGQdtI0IAAu_BtxIwLlJrvSSGzt-8C1JM9/pub?start=false&loop=false&delayms=3000&slide=id.p) | 16 октября |
 | [Advanced Pandas 1](https://github.com/eugenbobrov/advanced-pandas/blob/master/hw-1-advanced-pandas/hw-1-advanced-pandas.ipynb) | 18 октября (мягкий) / 25 октября (жёсткий) |
 | [Задание 4](https://docs.google.com/presentation/d/e/2PACX-1vR1bW9uvE6QSb5u5q7jzTC_TiVts654K0_lY6FB7VCgOiBRf45x-01LG7S23WWSjA_UwBX8P3RDodlN/pub?start=false&loop=false&delayms=3000&slide=id.g17340f7805_0_0) | 23 октября |
-| [Advanced Pandas 2](https://github.com/eugenbobrov/advanced-pandas/blob/master/hw-2-advanced-pandas/hw-2-advanced-pandas.ipynb) | - |
+| [Advanced Pandas 2](https://github.com/eugenbobrov/advanced-pandas/blob/master/hw-2-advanced-pandas/hw-2-advanced-pandas.ipynb) | 25 октября 23:59 (мягкий) / 1 ноября 23:59 (жёсткий) |
 <!-- | Задание 5 | 30 октября |
 | Задание 6 | 6 ноября | -->
 
