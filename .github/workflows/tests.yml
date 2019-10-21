@@ -39,7 +39,9 @@ jobs:
         pip3 install mysqlclient pytz
 
     - name: Run equality test
-      run: util/test_equality.py
+      run: |
+        export PYTHONHASHSEED=1597463007 
+        util/test_equality.py
 
     - name: Commit cached queries
       if: always()
