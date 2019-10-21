@@ -25,7 +25,7 @@ tasks = [
     TaskInfo(2, 2, skip=True, ordered=False),
     TaskInfo(2, 3, skip=True, ordered=True, valid_for='day'),
 
-    TaskInfo(3, 1, skip=True, ordered=False),
+    TaskInfo(3, 1, skip=False, ordered=False),
     TaskInfo(3, 2, skip=True, ordered=False, valid_for='day'),
     TaskInfo(3, 3, skip=True, ordered=False),
 ]
