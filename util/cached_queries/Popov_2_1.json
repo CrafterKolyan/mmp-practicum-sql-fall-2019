@@ -1,1 +1,1 @@
-{"sql": "SELECT \n\tCOUNT(*) AS count_unique_unchanged\nFROM (\n\tSELECT\n\t\t1\n\tFROM\n\t\tsrcdt.cd_customers\n\tGROUP BY\n\t\tcustomer_rk\n\tHAVING\n\t\tCOUNT(*) = 1\n) AS unique_unchanged", "valid_until": 253402300800.0, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}
+{"sql": "SELECT \n\tCOUNT(*) AS count_unique_unchanged\nFROM (\n\tSELECT\n\t\t1\n\tFROM\n\t\tsrcdt.cd_customers\n\tGROUP BY\n\t\tcustomer_rk\n\tHAVING\n\t\tCOUNT(*) = 1\n) AS unique_unchanged", "valid_until": 2044388412.889905, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

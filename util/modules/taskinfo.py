@@ -2,7 +2,6 @@ import re
 import os
 import time
 import sys
-from multiset import FrozenMultiset
 from .cache_manager import *
 
 def get_sql_result(connection, sql_query):
