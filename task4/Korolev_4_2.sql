@@ -1,6 +1,10 @@
 SELECT *
 FROM (
-  SELECT customer_rk, last_nm, first_nm, middle_nm
+  SELECT
+    customer_rk,
+    last_nm,
+    first_nm,
+    middle_nm
   FROM cd_customers
   WHERE valid_to_dttm = '5999-01-01 00:00:00'
 ) AS customer_names
@@ -12,7 +16,8 @@ WHERE customer_rk NOT IN (
     WHERE year_no = 2011
   ) AS dates
     JOIN
-    (SELECT MIN(renewed_dt) AS open_dt,
+    (SELECT 
+      MIN(renewed_dt) AS open_dt,
       MAX(expiration_dt) AS close_dt,
       ANY_VALUE(customer_rk) AS customer_rk
     FROM account_periods
