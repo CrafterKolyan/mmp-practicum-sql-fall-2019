@@ -46,10 +46,11 @@ jobs:
     - name: Commit cached queries
       if: always()
       run: |
-        git add util/cached_queries
-        git commit -m "[AUTO-TESTS] Cache query results"
-        git fetch -p
-        git rebase origin/master --merge --strategy-option=ours
+        git add util/cached_queries && \
+        git commit -m "[AUTO-TESTS] Cache query results" && \
+        git fetch -p && \
+        git rebase origin/master --merge --strategy-option=ours || \
+        true
 
     - name: Push cached queries to origin/master
       if: always()
