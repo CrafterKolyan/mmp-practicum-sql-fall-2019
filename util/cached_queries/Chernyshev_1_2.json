@@ -1,0 +1,1 @@
+{"sql": "SELECT\n    monthly_income_amt\nFROM\n    cd_customers\nWHERE\n    valid_from_dttm < '2015-01-01' AND\n    valid_to_dttm >= '2014-01-01'\nORDER BY\n    monthly_income_amt DESC\nLIMIT 10\n", "valid_until": 2044387754.804671, "rows": 10, "hash": 5754836293637237105, "data": "(Decimal('352000.0000000'),)"}

@@ -1,0 +1,1 @@
+{"sql": "SELECT DISTINCT\n    concat(floor(year(birth_dt) / 10), '0-\u0435') AS generation\nFROM\n    cd_customers\nWHERE\n    valid_to_dttm = '5999-01-01'\nORDER BY\n    generation DESC\n", "valid_until": 2044393417.951271, "rows": 12, "hash": -1001555936563509550, "data": "('2010-\u0435',)"}

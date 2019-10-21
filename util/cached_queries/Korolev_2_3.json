@@ -1,0 +1,1 @@
+{"sql": "SELECT\n  TIMESTAMPDIFF(YEAR, birth_dt, CURDATE()) AS age,\n  COUNT(*) AS customers\nFROM\n  cd_customers\nWHERE\n  valid_to_dttm = '5999-01-01 00:00:00'\nGROUP BY\n  age\nHAVING\n  age BETWEEN 15 AND 80\nORDER BY\n  age DESC\n", "valid_until": 1571616300.0, "rows": 66, "hash": 4491728481175759071, "data": "(80, 14701)"}

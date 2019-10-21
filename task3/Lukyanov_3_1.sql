@@ -6,9 +6,9 @@ FROM srcdt.cd_customers
 LEFT JOIN
 (SELECT first_nm, middle_nm, last_nm, COUNT(*) AS popularity
 FROM srcdt.cd_customers WHERE
-valid_from_dttm <= CURDATE() AND valid_to_dttm >= CURDATE()
+valid_to_dttm = '5999-01-01 00:00:00'
 GROUP BY first_nm, middle_nm, last_nm) AS popular
 ON srcdt.cd_customers.last_nm = popular.last_nm
 AND srcdt.cd_customers.first_nm = popular.first_nm
 AND srcdt.cd_customers.middle_nm = popular.middle_nm
-WHERE valid_from_dttm <= CURDATE() AND valid_to_dttm >= CURDATE()
+WHERE valid_to_dttm = '5999-01-01 00:00:00'
