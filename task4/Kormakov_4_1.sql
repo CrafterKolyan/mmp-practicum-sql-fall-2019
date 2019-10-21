@@ -1,17 +1,19 @@
 SELECT 
-    renewed_dt AS date, IF(TRUE, 'Opening', 0) AS status
+    renewed_dt AS date
 FROM
     srcdt.account_periods
 WHERE
     account_renewal_cnt = 1 
-UNION SELECT 
-    renewed_dt AS date, IF(TRUE, 'Renewal', 0) AS status
+UNION 
+SELECT 
+    renewed_dt AS date
 FROM
     srcdt.account_periods
 WHERE
     account_renewal_cnt > 1 
-UNION SELECT 
-    renewed_dt AS date, IF(TRUE, 'Future renewal', 0) AS status
+UNION 
+SELECT 
+    renewed_dt AS date
 FROM
     srcdt.account_periods
 WHERE
