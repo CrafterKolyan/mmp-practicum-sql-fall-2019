@@ -38,6 +38,8 @@ class TaskInfo:
         files = []
         for file in all_files:
             if re_files.fullmatch(file):
+                if file == "Petrenko_4_2.sql":
+                    continue
                 files.append(file)
         return files
 
