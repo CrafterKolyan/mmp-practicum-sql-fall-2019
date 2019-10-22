@@ -4,15 +4,17 @@ from
 	srcdt.account_periods
 union
 select
-	date_add(expiration_dt, interval 1 day) as date
+	expiration_dt as date
 from
-	srcdt.account_periods p
+	srcdt.account_periods
 where
-	account_renewal_cnt = (
+	expiration_dt >= current_date
+	and account_renewal_cnt = (
 	select
 		max(account_renewal_cnt)
 	from
-		srcdt.account_periods
+		srcdt.account_periods p
 	where
 		account_rk = p.account_rk)
-order by date
+order by
+	date
