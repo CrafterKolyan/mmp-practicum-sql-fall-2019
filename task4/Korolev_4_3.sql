@@ -1,11 +1,11 @@
 SELECT
-  DATE_FORMAT(expiration_dt, "%Y-%m") AS `MONTH`,
+  DATE_FORMAT(renewed_dt, "%Y-%m") AS `MONTH`,
   0 AS FROM_CNT,
   account_renewal_cnt AS TO_CNT,
   COUNT(*) AS CNT
 FROM
   account_periods
-  WHERE account_renewal_cnt = 1 AND expiration_dt <= CURDATE()
+  WHERE account_renewal_cnt = 1 AND renewed_dt <= CURDATE()
   GROUP BY `MONTH`, FROM_CNT, TO_CNT
 UNION ALL
 SELECT
