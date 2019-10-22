@@ -26,7 +26,7 @@ WHERE
 				(SELECT
 					customer_rk,
 					account_rk,
-                    			MIN(renewed_dt) AS renewed_dt,
+          MIN(renewed_dt) AS renewed_dt,
 					MAX(expiration_dt) AS expiration_dt
 				FROM 
 					srcdt.account_periods
