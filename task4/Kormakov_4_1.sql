@@ -13,7 +13,7 @@ WHERE
     account_renewal_cnt > 1 
 UNION 
 SELECT 
-    renewed_dt AS date
+    expiration_dt AS date
 FROM
     srcdt.account_periods
 WHERE
