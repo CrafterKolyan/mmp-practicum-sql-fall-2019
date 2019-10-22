@@ -20,7 +20,7 @@ WHERE valid_to_dttm = '5999-01-01 00:00:00'
         LEFT JOIN (
             SELECT
                 ANY_VALUE(customer_rk) AS customer_rk,
-                MIN(renewed_dt) AS open_dt,T 
+                MIN(renewed_dt) AS open_dt,
                 MAX(expiration_dt) AS close_dt
             FROM
                 account_periods
