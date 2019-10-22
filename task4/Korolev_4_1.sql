@@ -15,3 +15,4 @@ SELECT
 FROM
   account_periods
   WHERE expiration_dt > '2019-09-01'
+ORDER BY `date` ASC
