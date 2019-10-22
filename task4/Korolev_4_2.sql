@@ -5,7 +5,7 @@ FROM (
     ANY_VALUE(customer_rk)
   FROM account_periods
   GROUP BY account_rk
-  WHERE YEAR(MAX(expiration_dt)) = 2011
+  HAVING YEAR(MAX(expiration_dt)) = 2011
 ) AS customer_names
 WHERE customer_rk NOT IN (
   SELECT
