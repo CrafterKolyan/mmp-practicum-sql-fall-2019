@@ -1,39 +1,33 @@
 SELECT
-  cd_customers.customer_rk,
-  cd_customers.last_nm,
-  cd_customers.first_nm,
-  cd_customers.middle_nm
-FROM (
-  SELECT DISTINCT
-    ANY_VALUE(customer_rk) AS customer_rk
-  FROM account_periods
-  GROUP BY account_rk
-  HAVING YEAR(MAX(expiration_dt)) = 2011
-) AS customer_ids
-JOIN
-  cd_customers
-ON cd_customers.customer_rk = customer_ids.customer_rk
+    customer_rk,
+    last_nm,
+    first_nm,
+    middle_nm
+FROM cd_customers
 WHERE valid_to_dttm = '5999-01-01 00:00:00'
-      AND cd_customers.customer_rk NOT IN (
-        SELECT
-          customer_rk
+      AND customer_rk IN (
+        SELECT filtered_deposits.customer_rk
         FROM (
-          SELECT calendar_dt
-          FROM calendar
-          WHERE year_no = 2011
-        ) AS dates
-          JOIN (
-          SELECT 
-            MIN(renewed_dt) AS open_dt,
-            MAX(expiration_dt) AS close_dt,
-            ANY_VALUE(customer_rk) AS customer_rk
-          FROM account_periods
-          GROUP BY account_rk) AS accounts
-          ON accounts.open_dt < dates.calendar_dt AND dates.calendar_dt < accounts.close_dt
-        GROUP BY customer_rk
-        HAVING COUNT(DISTINCT calendar_dt) = (
-          SELECT COUNT(DISTINCT calendar_dt)
-          FROM calendar
-          WHERE year_no = 2011
-        )
+            SELECT
+                account_rk,
+                ANY_VALUE(customer_rk) AS customer_rk,
+                MAX(expiration_dt) AS close_dt
+            FROM
+                account_periods
+            GROUP BY account_rk
+            HAVING YEAR(close_dt) = 2011
+        ) AS filtered_deposits
+        LEFT JOIN (
+            SELECT
+                ANY_VALUE(customer_rk) AS customer_rk,
+                MIN(renewed_dt) AS open_dt,
+                MAX(expiration_dt) AS close_dt
+            FROM
+                account_periods
+            GROUP BY account_rk
+        ) as deposits
+        ON filtered_deposits.customer_rk = deposits.customer_rk
+           AND deposits.open_dt < filtered_deposits.close_dt
+           AND filtered_deposits.close_dt < deposits.close_dt
+        WHERE deposits.customer_rk IS NULL
       )
