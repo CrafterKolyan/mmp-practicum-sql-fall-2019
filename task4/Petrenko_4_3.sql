@@ -19,5 +19,5 @@ FROM
     LEFT JOIN srcdt.account_periods b ON a.account_rk = b.account_rk
         AND a.account_renewal_cnt + 1 = b.account_renewal_cnt)) new_table
 WHERE
-    MONTH <= CURDATE()
+    MONTH <= DATE_FORMAT(CURDATE(), '%Y-%m')
 GROUP BY MONTH , FROM_CNT , TO_CNT
