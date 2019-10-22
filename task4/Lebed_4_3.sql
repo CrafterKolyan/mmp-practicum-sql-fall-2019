@@ -3,8 +3,7 @@ select
 	from_cnt,
 	to_cnt,
 	count(*) as cnt
-from
-(
+from (
 	(
 	select
 		date_format(curr.renewed_dt, '%Y-%d') as month,
@@ -22,10 +21,14 @@ from
 		from
 			srcdt.account_periods) as curr on
 		curr.account_rk = prev.account_rk
-		and curr.account_renewal_cnt = prev.account_renewal_cnt + 1)
-union all (
+		and curr.account_renewal_cnt = prev.account_renewal_cnt + 1
+	where 
+		curr.renewed_dt <= current_date
+	)
+union all 
+	(
 	select
-		date_format(curr.renewed_dt, '%Y-%d') as month,
+		date_format(curr.expiration_dt, '%Y-%d') as month,
 		curr.account_renewal_cnt as from_cnt,
 		ifnull(next.account_renewal_cnt, 2147483647) as to_cnt
 	from
@@ -43,6 +46,7 @@ union all (
 		and curr.account_renewal_cnt = next.account_renewal_cnt - 1
 	where
 		next.account_rk is null
+		and curr.expiration_dt <= current_date
 	)
 ) as trans
 group by

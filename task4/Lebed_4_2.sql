@@ -20,8 +20,11 @@ where
 		select
 			*
 		from
-			srcdt.account_periods) as accs on
-		calendar_dt between renewed_dt and expiration_dt
+			srcdt.account_periods
+		where
+			year(renewed_dt) <= 2011
+			and year(expiration_dt) >= 2011) as accs on
+		calendar_dt >= renewed_dt and calendar_dt < expiration_dt
 	group by
 		customer_rk
 	having
