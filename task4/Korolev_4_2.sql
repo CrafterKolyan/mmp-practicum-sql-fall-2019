@@ -22,8 +22,8 @@ WHERE valid_to_dttm = '5999-01-01 00:00:00'
           FROM calendar
           WHERE year_no = 2011
         ) AS dates
-          JOIN
-          (SELECT 
+          JOIN (
+          SELECT 
             MIN(renewed_dt) AS open_dt,
             MAX(expiration_dt) AS close_dt,
             ANY_VALUE(customer_rk) AS customer_rk
