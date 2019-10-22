@@ -1,0 +1,1 @@
+{"sql": "SELECT \n\tcount(customer_rk), TIMESTAMPDIFF(YEAR, birth_dt, curdate()) as dt\nFROM \n\tsrcdt.cd_customers\nWHERE \n\tvalid_to_dttm = '5999-01-01 00:00:00'\nGROUP BY\n\tdt\nHAVING\n\tdt >= 15 AND dt <= 80\nORDER BY\n\tdt DESC\n", "valid_until": 1571616300.0, "rows": 66, "hash": 6020526514104795515, "data": "(14701, 80)"}
