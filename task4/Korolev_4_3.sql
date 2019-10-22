@@ -1,7 +1,7 @@
 SELECT
   DATE_FORMAT(renewed_dt, "%Y-%m") AS `MONTH`,
   0 AS FROM_CNT,
-  account_renewal_cnt AS TO_CNT,
+  1 AS TO_CNT,
   COUNT(*) AS CNT
 FROM
   account_periods
