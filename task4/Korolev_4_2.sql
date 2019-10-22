@@ -5,7 +5,7 @@ SELECT
   cd_customers.middle_nm
 FROM (
   SELECT DISTINCT
-    ANY_VALUE(customer_rk) AS customer_rk,
+    ANY_VALUE(customer_rk) AS customer_rk
   FROM account_periods
   GROUP BY account_rk
   HAVING YEAR(MAX(expiration_dt)) = 2011
