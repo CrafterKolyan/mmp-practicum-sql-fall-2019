@@ -1,6 +1,7 @@
 SELECT 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     calendar_dt, IFNULL(SUM(num_dates), 0) AS num_deposits
 =======
     calendar_dt, COALESCE(SUM(num_dates), 0) AS num_deposits
@@ -8,6 +9,9 @@ SELECT
 =======
     calendar_dt, IFNULL(SUM(num_dates), 0) AS num_deposits
 >>>>>>> little changes
+=======
+    calendar_dt, IFNULL(SUM(num_dates), 0) AS num_deposits
+>>>>>>> f8c718810deedfba7ef77cc2743960c19890ea09
 FROM
     (SELECT 
         calendar_dt
