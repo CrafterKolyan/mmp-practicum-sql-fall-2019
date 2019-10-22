@@ -23,6 +23,5 @@ FROM
     ON acc1.account_rk = acc2.account_rk AND
 	   acc1.expiration_dt = acc2.renewed_dt 
 	WHERE 
-	   acc1.expiration_dt <= CURDATE()
+	  acc1.expiration_dt <= CURDATE()
     GROUP BY MONTH, FROM_CNT, TO_CNT
-
