@@ -1,15 +1,15 @@
-SELECT *
+SELECT
+  *
 FROM (
-  SELECT
-    customer_rk,
-    last_nm,
-    first_nm,
-    middle_nm
-  FROM cd_customers
-  WHERE valid_to_dttm = '5999-01-01 00:00:00'
+  SELECT DISTINCT
+    ANY_VALUE(customer_rk)
+  FROM account_periods
+  GROUP BY account_rk
+  WHERE YEAR(MAX(expiration_dt)) = 2011
 ) AS customer_names
 WHERE customer_rk NOT IN (
-  SELECT customer_rk
+  SELECT
+    customer_rk
   FROM (
     SELECT calendar_dt
     FROM calendar
