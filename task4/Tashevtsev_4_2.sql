@@ -29,8 +29,10 @@ WHERE valid_to_dttm = '5999-01-01 00:00:00' AND
 			ON
 				a.customer_rk = b.customer_rk AND
 				a.account_rk <> b.account_rk AND
-				b.renewed_dt < a.closed_date AND
-				b.expiration_dt > a.closed_date
+				((b.renewed_dt < a.closed_date AND
+				b.expiration_dt > a.closed_date) OR
+				(b.renewed_dt = a.closed_date AND
+				b.account_renewal_cnt > 1))
 		) as not_total_closures
 		ON closed_2011.customer_rk = not_total_closures.customer_rk AND
 			closed_2011.account_rk = not_total_closures.account_rk
