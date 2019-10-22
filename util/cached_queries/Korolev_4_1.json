@@ -1,1 +1,1 @@
-{"sql": "SELECT\n  renewed_dt AS dates\nFROM\n  account_periods\nUNION\nSELECT\n  expiration_dt AS dates\nFROM\n  account_periods\nORDER BY dates ASC", "valid_until": 2044726707.787342, "rows": 4237, "hash": 5235854328500906571, "data": "(datetime.date(2010, 1, 2),)"}
+{"sql": "SELECT\n  renewed_dt AS `date`\nFROM\n  account_periods\nUNION\nSELECT\n  expiration_dt AS `date`\nFROM\n  account_periods\n  WHERE expiration_dt > '2019-09-01'\nORDER BY `date` ASC\n", "valid_until": 2044823706.956444, "rows": 4237, "hash": -5107389247923069932, "data": "(datetime.date(2010, 1, 2),)"}
