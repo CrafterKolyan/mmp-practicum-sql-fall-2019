@@ -38,7 +38,8 @@ WHERE
 			ON
 				accounts.customer_rk = acc.customer_rk AND
 				accounts.account_rk != acc.account_rk AND
-				accounts.date_of_closing BETWEEN acc.renewed_dt AND acc.expiration_dt
+				accounts.date_of_closing > acc.renewed_dt AND
+				accounts.date_of_closing < acc.expiration_dt
 		) AS not_closed
 		ON closed.customer_rk = not_closed.customer_rk AND
 			closed.account_rk = not_closed.account_rk
