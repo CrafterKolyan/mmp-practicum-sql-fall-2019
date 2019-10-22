@@ -1,0 +1,1 @@
+{"sql": "SELECT count(*) as count_no_change\nFROM (\n\tSELECT \n\t\tcustomer_rk,\n\t\tcount(customer_rk) as count_uniq\n\tFROM srcdt.cd_customers\n\tGROUP BY customer_rk\n\tHAVING count_uniq=1\n) AS count_uniq", "valid_until": 2044388397.763635, "rows": 1, "hash": 3230631086288280803, "data": "(335343,)"}

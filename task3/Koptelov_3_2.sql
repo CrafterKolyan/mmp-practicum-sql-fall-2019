@@ -1,5 +1,5 @@
 SELECT 
-    calendar_dt, COALESCE(SUM(num_dates), 0) AS num_deposits
+    calendar_dt, IFNULL(SUM(num_dates), 0) AS num_deposits
 FROM
     (SELECT 
         calendar_dt
