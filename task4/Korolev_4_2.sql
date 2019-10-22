@@ -14,7 +14,7 @@ JOIN
   cd_customers
 ON cd_customers.customer_rk = customer_ids.customer_rk
 WHERE valid_to_dttm = '5999-01-01 00:00:00'
-      AND customer_rk NOT IN (
+      AND cd_customers.customer_rk NOT IN (
         SELECT
           customer_rk
         FROM (
