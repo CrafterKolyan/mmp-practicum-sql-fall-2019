@@ -1,5 +1,5 @@
 SELECT
-    customer_rk,
+	  customer_rk,
     last_nm,
     first_nm,
     middle_nm
