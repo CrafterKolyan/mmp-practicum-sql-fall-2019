@@ -1,1 +1,0 @@
-{"sql": "SELECT\n  renewed_dt AS dates\nFROM\n  account_periods\nUNION\nSELECT\n  expiration_dt AS dates\nFROM\n  account_periods\nORDER BY dates ASC", "valid_until": 2044726707.787342, "rows": 4237, "hash": 5235854328500906571, "data": "(datetime.date(2010, 1, 2),)"}
