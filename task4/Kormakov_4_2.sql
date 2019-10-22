@@ -1,5 +1,5 @@
 SELECT
-	  customer_rk,
+    customer_rk,
     last_nm,
     first_nm,
     middle_nm
@@ -23,8 +23,17 @@ WHERE
 				accounts.customer_rk,
 				accounts.account_rk 
 			FROM 
-				srcdt.account_periods AS acc
-            JOIN (
+				(SELECT
+					customer_rk,
+					account_rk,
+                    			MIN(renewed_dt) AS renewed_dt,
+					MAX(expiration_dt) AS expiration_dt
+				FROM 
+					srcdt.account_periods
+				GROUP BY 
+					customer_rk, account_rk
+			) AS acc
+            		JOIN (
 				SELECT
 					customer_rk,
 					account_rk,
