@@ -28,6 +28,6 @@ where
         on
             closed_accounts.customer_rk = accounts.customer_rk and
             accounts.left_border < closed_accounts.right_border and
-            closed_accounts.right_border < accounts.left_border
+            closed_accounts.right_border < accounts.right_border
         where accounts.customer_rk is null
       )
