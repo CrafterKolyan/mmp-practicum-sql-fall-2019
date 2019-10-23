@@ -9,5 +9,5 @@ INNER JOIN (
     WHERE valid_to_dttm = '5999-01-01'
     GROUP BY name
 ) AS t2
-ON concat_ws(' ', t1.first_nm, t1.middle_nm, t1.last_nm) = t2.name
+ON concat_ws(' ', t1.last_nm, t1.first_nm, t1.middle_nm) = t2.name
 AND t1.valid_to_dttm = '5999-01-01';
