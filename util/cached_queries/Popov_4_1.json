@@ -1,0 +1,1 @@
+{"sql": "SELECT\n\trenewed_dt AS possibly_renewed_dt\nFROM\n    srcdt.account_periods\nUNION\nSELECT\n\texpiration_dt AS possibly_renewed_dt\nFROM\n\tsrcdt.account_periods\nWHERE\n\tvalid_to_dttm = '5999-01-01 00:00:00'\nORDER BY possibly_renewed_dt ASC\nLIMIT 5", "valid_until": 2044900130.694064, "rows": 5, "hash": 2691763505122685742, "data": "(datetime.date(2010, 1, 2),)"}
