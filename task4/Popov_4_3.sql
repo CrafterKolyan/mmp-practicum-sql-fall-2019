@@ -10,7 +10,8 @@ LEFT JOIN
 ON 
 	periods_old.account_rk = periods_new.account_rk 
     AND periods_old.expiration_dt = periods_new.renewed_dt
-    AND periods_old.expiration_dt <= CURDATE()
+WHERE
+	periods_old.expiration_dt <= CURDATE()
 GROUP BY `MONTH`, FROM_CNT, TO_CNT
 UNION
 SELECT
