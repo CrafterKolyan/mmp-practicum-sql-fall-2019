@@ -6,7 +6,7 @@ SELECT
     middle_nm
 FROM srcdt.cd_customers
 WHERE valid_to_dttm = '5999-01-01 00:00:00'
-	AND customer_rk NOT IN (
+	AND customer_rk IN (
 	SELECT closed_in_2011.customer_rk
 	FROM (
 		SELECT
@@ -29,4 +29,5 @@ WHERE valid_to_dttm = '5999-01-01 00:00:00'
 	ON closed_in_2011.customer_rk = all_deposits.customer_rk
 		AND closed_in_2011.close_dt > all_deposits.open_dt 
 		AND closed_in_2011.close_dt < all_deposits.close_dt
+	WHERE all_deposits.customer_rk IS NULL
 )
