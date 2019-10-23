@@ -1,6 +1,9 @@
 SELECT
 	customer_rk,
-	concat(last_nm, ' ', first_nm, ' ', middle_nm) AS full_nm
+--	concat(last_nm, ' ', first_nm, ' ', middle_nm) AS full_nm
+	last_nm,
+    first_nm,
+    middle_nm
 FROM srcdt.cd_customers
 WHERE valid_to_dttm = '5999-01-01 00:00:00'
 	AND customer_rk NOT IN (
