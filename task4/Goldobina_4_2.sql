@@ -26,7 +26,7 @@ WHERE customers.valid_to_dttm = '5999-01-01 00:00:00' AND
             GROUP BY customer_rk, account_rk
         ) AS t2
     ON t1.customer_rk = t2.customer_rk AND
-       t2.date_opened <= t1.date_closed AND
+       t2.date_opened < t1.date_closed AND
        t2.date_closed > t1.date_closed
     where t2.customer_rk is NULL
 )
