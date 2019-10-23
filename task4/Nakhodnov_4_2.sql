@@ -1,6 +1,6 @@
 select
     cd_customers.customer_rk,
-    concat(last_nm, ' ', first_nm, ' ', middle_nm) AS name
+    concat(last_nm, ' ', first_nm, ' ', middle_nm) as name
 from srcdt.cd_customers as cd_customers
 where
     cd_customers.valid_to_dttm = '5999-01-01 00:00:00' and
