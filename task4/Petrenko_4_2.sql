@@ -30,5 +30,3 @@ WHERE
                 AND a.closed_dt < b.closed_dt) t
         WHERE
             null_flag IS NULL)
-
-
