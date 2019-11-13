@@ -10,15 +10,15 @@
 | [Advanced Pandas 1](https://github.com/eugenbobrov/advanced-pandas/blob/master/hw-1-advanced-pandas/hw-1-advanced-pandas.ipynb) | 18 октября 23:59 (мягкий) / 25 октября 23:59 (жёсткий) |
 | [Задание 4](https://docs.google.com/presentation/d/e/2PACX-1vR1bW9uvE6QSb5u5q7jzTC_TiVts654K0_lY6FB7VCgOiBRf45x-01LG7S23WWSjA_UwBX8P3RDodlN/pub?start=false&loop=false&delayms=3000&slide=id.g17340f7805_0_0) | 23 октября |
 | [Advanced Pandas 2](https://github.com/eugenbobrov/advanced-pandas/blob/master/hw-2-advanced-pandas/hw-2-advanced-pandas.ipynb) | 25 октября 23:59 (мягкий) / 1 ноября 23:59 (жёсткий) |
-<!-- | Задание 5 | 30 октября |
-| Задание 6 | 6 ноября | -->
+| Задание 7 | - |
+| Задание 8 | - |
 
 
 ## Куда сдавать задания
-В папки `task1`, `task2`, ..., `task4` в формате `<Фамилия>_<номер задачи>_<номер подзадачи>.sql`, например `task2/Kormakov_2_1.sql`.
+В папки `task1`, `task2`, ..., `task8` в формате `<Фамилия>_<номер задачи>_<номер подзадачи>.sql`, например `task2/Kormakov_2_1.sql`.
 Совпадение номера задачи и номера папки обязательно (иначе система не примет).
 Также есть система защиты от других студентов, Ваши файлы сможете изменить только Вы (и я).
-Доступ на создание папок `task1`, `task2`, ..., `task4` у всех есть.
+Доступ на создание папок `task1`, `task2`, ..., `task8` у всех есть.
 
 ## Как сдать задание
 0. Написать Крафтеру свой github и фамилию на английском языке
