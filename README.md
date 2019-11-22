@@ -1,6 +1,6 @@
 # Система сдачи заданий для практикума по SQL
 
-Действует автоматическая система тестирования:
+Действует автоматическая система тестирования:  
 [Результаты тестирования](https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019/actions?query=workflow%3ATests+branch%3Amaster)
 
 ## Сроки сдачи заданий
