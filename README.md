@@ -14,7 +14,7 @@
 | [Задание 4](https://docs.google.com/presentation/d/e/2PACX-1vR1bW9uvE6QSb5u5q7jzTC_TiVts654K0_lY6FB7VCgOiBRf45x-01LG7S23WWSjA_UwBX8P3RDodlN/pub?start=false&loop=false&delayms=3000&slide=id.g17340f7805_0_0) | 23 октября |
 | [Advanced Pandas 2](https://github.com/eugenbobrov/advanced-pandas/blob/master/hw-2-advanced-pandas/hw-2-advanced-pandas.ipynb) | 25 октября 23:59 (мягкий) / 1 ноября 23:59 (жёсткий) |
 | [Задание 7](https://docs.google.com/presentation/d/e/2PACX-1vRWEPitNNp3rswV3l07EKCMOuEu9MIiV0yBnS5GgtESkBA8tbnrKGiadJH11HGoup7tnpB-2Ydt0OFd/pub?start=false&loop=false&delayms=3000) | 4 декабря |
-| [Задание 8](https://docs.google.com/presentation/d/e/2PACX-1vSU7Tf1yeisRbXSkZ4nPkmJEYeK4PYu24Rhc5iyA05G-RhGu5uXXiWvDtzsriAR1VXv68amT6Gk0GDq/pub?start=false&loop=false&delayms=3000) | 11 декабря |
+| [Задание 8](https://docs.google.com/presentation/d/e/2PACX-1vSU7Tf1yeisRbXSkZ4nPkmJEYeK4PYu24Rhc5iyA05G-RhGu5uXXiWvDtzsriAR1VXv68amT6Gk0GDq/pub?start=false&loop=false&delayms=3000) | 18 декабря |
 
 
 ## Куда сдавать задания
