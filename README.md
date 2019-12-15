@@ -3,6 +3,9 @@
 Действует автоматическая система тестирования:  
 [Результаты тестирования](https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019/actions?query=workflow%3ATests+branch%3Amaster)
 
+Результаты группы после 7 задания:
+[Результаты тестирования](results/2019H2_ASQL_417%20после%207.pdf)
+
 ## Сроки сдачи заданий
 
 | Задание     | Дата сдачи |
