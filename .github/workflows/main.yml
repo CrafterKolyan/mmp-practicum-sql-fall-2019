@@ -18,7 +18,7 @@ jobs:
 
     - name: Emulating merge commit to origin/master
       run: |
-        git checkout origin/master
+        git checkout master
         git merge --no-ff "$GITHUB_SHA"
 
     - name: Run security check
