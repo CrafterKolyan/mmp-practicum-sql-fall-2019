@@ -1,2 +1,6 @@
 .ipynb_checkpoints
 __pycache__
+
+# Sublime project files
+*.sublime-project
+*.sublime-workspace

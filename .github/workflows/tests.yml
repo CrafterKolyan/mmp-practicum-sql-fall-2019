@@ -18,7 +18,7 @@ jobs:
 
     - name: Emulating merge commit to origin/master
       run: |
-        git checkout -t origin/master
+        git checkout master
         git merge --no-ff "$GITHUB_SHA"
 
     - name: Cloning data
@@ -34,7 +34,8 @@ jobs:
 
     - name: Installing MySQLdb and pytz
       run: |
-        sudo apt-get install libmysqlclient-dev
+        sudo apt-get update
+        sudo apt-get install -y libmysqlclient-dev
         pip3 install setuptools
         pip3 install mysqlclient pytz
 
