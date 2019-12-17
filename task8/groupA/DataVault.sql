@@ -54,8 +54,54 @@ SELECT
     super_user
 FROM junk_users;
 
-INSERT INTO datavault_user_hub
-SELECT user_key, LOADDTS, ResSrc FROM datavault_user_satellite;
+CREATE TABLE IF NOT EXISTS datavault_group_satellite
+(
+    group_key INT NOT NULL AUTO_INCREMENT,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    Дисциплина VARCHAR(120),
+    PRIMARY KEY(group_key, LoadDTS)
+);
+
+CREATE TABLE IF NOT EXISTS datavault_user_group_satellite
+(
+    user_group_key INT NOT NULL AUTO_INCREMENT,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    Преподаватель TINYINT(1) NOT NULL,
+    Псевдоним VARCHAR(120),
+    PRIMARY KEY(user_group_key, LoadDTS)
+);
+
+CREATE TABLE IF NOT EXISTS datavault_assignment_satellite
+(
+    assignment_key INT NOT NULL AUTO_INCREMENT,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    Дисциплина VARCHAR(120),
+    Текст VARCHAR(1000),
+    Дедлайн DATETIME NOT NULL,
+    PRIMARY KEY(assignment_key, LoadDTS)
+);
+
+CREATE TABLE IF NOT EXISTS datavault_task_satellite
+(
+    task_key INT NOT NULL AUTO_INCREMENT,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    Текст VARCHAR(1000),
+    PRIMARY KEY(task_key, LoadDTS)
+);
+
+CREATE TABLE IF NOT EXISTS datavault_grade_satellite
+(
+    grade_key INT NOT NULL AUTO_INCREMENT,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    Комментарий VARCHAR(1000) NOT NULL,
+    Оценка INT NOT NULL,
+    PRIMARY KEY(grade_key, LoadDTS)
+);
 
 CREATE TABLE IF NOT EXISTS datavault_group_hub
 (
@@ -117,36 +163,6 @@ CREATE TABLE IF NOT EXISTS datavault_assignment_group_link
     PRIMARY KEY(group_assignment_key)
 );
 
-CREATE TABLE IF NOT EXISTS datavault_group_satellite
-(
-    group_key INT NOT NULL AUTO_INCREMENT,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    Дисциплина VARCHAR(120),
-    PRIMARY KEY(group_key, LoadDTS)
-);
-
-CREATE TABLE IF NOT EXISTS datavault_user_group_satellite
-(
-    user_group_key INT NOT NULL AUTO_INCREMENT,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    Преподаватель TINYINT(1) NOT NULL,
-    Псевдоним VARCHAR(120),
-    PRIMARY KEY(user_group_key, LoadDTS)
-);
-
-CREATE TABLE IF NOT EXISTS datavault_assignment_satellite
-(
-    assignment_key INT NOT NULL AUTO_INCREMENT,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    Дисциплина VARCHAR(120),
-    Текст VARCHAR(1000),
-    Дедлайн DATETIME NOT NULL,
-    PRIMARY KEY(assignment_key, LoadDTS)
-);
-
 CREATE TABLE IF NOT EXISTS datavault_user_assignment_link
 (
     user_assignment_key INT NOT NULL AUTO_INCREMENT,
@@ -155,15 +171,6 @@ CREATE TABLE IF NOT EXISTS datavault_user_assignment_link
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
     PRIMARY KEY(user_assignment_key)
-);
-
-CREATE TABLE IF NOT EXISTS datavault_task_satellite
-(
-    task_key INT NOT NULL AUTO_INCREMENT,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    Текст VARCHAR(1000),
-    PRIMARY KEY(task_key, LoadDTS)
 );
 
 CREATE TABLE IF NOT EXISTS datavault_task_assignment_link
@@ -206,16 +213,6 @@ CREATE TABLE IF NOT EXISTS datavault_user_solution_link
     PRIMARY KEY(user_solution_key)
 );
 
-CREATE TABLE IF NOT EXISTS datavault_grade_satellite
-(
-    grade_key INT NOT NULL AUTO_INCREMENT,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    Комментарий VARCHAR(1000) NOT NULL,
-    Оценка INT NOT NULL,
-    PRIMARY KEY(grade_key, LoadDTS)
-);
-
 CREATE TABLE IF NOT EXISTS datavault_grade_solution_link
 (
     grade_solution_key INT NOT NULL AUTO_INCREMENT,
@@ -235,6 +232,9 @@ CREATE TABLE IF NOT EXISTS datavault_grade_user_link
     ResSrc VARCHAR(40),
     PRIMARY KEY(grade_solution_key)
 );
+
+INSERT INTO datavault_user_hub
+SELECT user_key, LoadDTS, ResSrc FROM datavault_user_satellite;
 
 ALTER TABLE datavault_user_satellite
 ADD FOREIGN KEY (user_key)
