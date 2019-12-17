@@ -9,6 +9,7 @@ DROP TABLE IF EXISTS datavault_assignment_group_link,
                      datavault_group_satellite,
                      datavault_solution_assignment_link,
                      datavault_solution_hub,
+                     datavault_solution_satellite,
                      datavault_task_assignment_link,
                      datavault_task_hub,
                      datavault_task_satellite,
@@ -45,7 +46,7 @@ CREATE TABLE IF NOT EXISTS datavault_user_satellite
 SELECT
     "junk" AS ResSrc,
     login,
-    name AS first_name,
+    NAME AS first_name,
     last_name,
     middle_name,
     password_hash,
@@ -83,7 +84,7 @@ CREATE TABLE IF NOT EXISTS datavault_assignment_satellite
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
     discipline VARCHAR(120),
-    text VARCHAR(1000),
+    TEXT VARCHAR(1000),
     deadline DATETIME NOT NULL,
     PRIMARY KEY(assignment_key, LoadDTS)
 );
@@ -93,7 +94,7 @@ CREATE TABLE IF NOT EXISTS datavault_task_satellite
     task_key INT NOT NULL AUTO_INCREMENT,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    text VARCHAR(1000),
+    TEXT VARCHAR(1000),
     PRIMARY KEY(task_key, LoadDTS)
 );
 
@@ -102,7 +103,7 @@ CREATE TABLE IF NOT EXISTS datavault_grade_satellite
     grade_key INT NOT NULL AUTO_INCREMENT,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    comment VARCHAR(1000) NOT NULL,
+    COMMENT VARCHAR(1000) NOT NULL,
     grade INT NOT NULL,
     PRIMARY KEY(grade_key, LoadDTS)
 );
@@ -192,7 +193,7 @@ CREATE TABLE IF NOT EXISTS datavault_solution_satellite
     solution_key INT NOT NULL AUTO_INCREMENT,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    text VARCHAR(1000),
+    TEXT VARCHAR(1000),
     submission_datetime DATETIME,
     PRIMARY KEY(solution_key, LoadDTS)
 );
