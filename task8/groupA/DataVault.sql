@@ -246,7 +246,7 @@ ADD FOREIGN KEY (group_key)
 REFERENCES datavault_group_hub(group_key);
     
 ALTER TABLE datavault_assignment_group_link
-ADD FOREIGN KEY (task_key)
+ADD FOREIGN KEY (assignment_key)
 REFERENCES datavault_assignment_hub(task_key);
     
 ALTER TABLE datavault_assignment_group_link
@@ -270,11 +270,11 @@ ADD FOREIGN KEY (user_key)
 REFERENCES Пользователь HUB(user_key);
     
 ALTER TABLE datavault_assignment_satellite
-ADD FOREIGN KEY (task_key)
+ADD FOREIGN KEY (assignment_key)
 REFERENCES datavault_assignment_hub(task_key);
     
 ALTER TABLE datavault_user_assignment_link
-ADD FOREIGN KEY (task_key)
+ADD FOREIGN KEY (assignment_key)
 REFERENCES datavault_assignment_hub(task_key);
     
 ALTER TABLE datavault_user_assignment_link
@@ -282,24 +282,24 @@ ADD FOREIGN KEY (user_key)
 REFERENCES Пользователь HUB(user_key);
     
 ALTER TABLE datavault_task_satellite
-ADD FOREIGN KEY (problem_key)
-REFERENCES datavault_task_hub(problem_key);
+ADD FOREIGN KEY (assignment_key)
+REFERENCES datavault_task_hub(assignment_key);
     
 ALTER TABLE datavault_task_assignment_link
-ADD FOREIGN KEY (task_key)
+ADD FOREIGN KEY (assignment_key)
 REFERENCES datavault_assignment_hub(task_key);
     
 ALTER TABLE datavault_task_assignment_link
-ADD FOREIGN KEY (problem_key)
-REFERENCES datavault_task_hub(problem_key);
+ADD FOREIGN KEY (assignment_key)
+REFERENCES datavault_task_hub(assignment_key);
     
 ALTER TABLE datavault_solution_satellite
 ADD FOREIGN KEY (solution_key)
 REFERENCES datavault_solution_hub(solution_key);
     
 ALTER TABLE datavault_solution_assignment_link
-ADD FOREIGN KEY (problem_key)
-REFERENCES datavault_task_hub(problem_key);
+ADD FOREIGN KEY (assignment_key)
+REFERENCES datavault_task_hub(assignment_key);
     
 ALTER TABLE datavault_solution_assignment_link
 ADD FOREIGN KEY (solution_key)
