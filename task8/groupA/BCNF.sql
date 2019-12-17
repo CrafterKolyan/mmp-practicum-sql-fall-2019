@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS bcnf_assignment
     assignment_id INT NOT NULL UNIQUE,
     author VARCHAR(40) NOT NULL,
     group_id INT NOT NULL,
-    text VARCHAR(1000) NOT NULL,
+    `text` VARCHAR(1000) NOT NULL,
     deadline TIMESTAMP NOT NULL,
     PRIMARY KEY(assignment_id),
     
@@ -58,26 +58,26 @@ CREATE TABLE IF NOT EXISTS bcnf_assignment
         REFERENCES bcnf_groups(group_id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) AS
-SELECT assignment_id, author, deadline, group_key AS group_id, text FROM junk_assignments;
+SELECT assignment_id, author, deadline, group_key AS group_id, `text` FROM junk_assignments;
 
 CREATE TABLE IF NOT EXISTS bcnf_tasks
 (
     task_id INT NOT NULL UNIQUE,
     assignment_id INT NOT NULL,
-    text VARCHAR(1000) NOT NULL,
+    `text` VARCHAR(1000) NOT NULL,
     PRIMARY KEY(task_id),
     
     FOREIGN KEY (assignment_id)
         REFERENCES bcnf_assignment(assignment_id)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) AS
-SELECT assignment_id, task_id, text FROM junk_tasks;
+SELECT assignment_id, task_id, `text` FROM junk_tasks;
 
 CREATE TABLE IF NOT EXISTS bcnf_solutions
 (
     student VARCHAR(40) NOT NULL,
     task_id INT NOT NULL,
-    text VARCHAR(1000) NOT NULL,
+    `text` VARCHAR(1000) NOT NULL,
     submission_datetime TIMESTAMP NOT NULL,
     PRIMARY KEY(task_id, student),
     
@@ -88,7 +88,7 @@ CREATE TABLE IF NOT EXISTS bcnf_solutions
         REFERENCES bcnf_users(login)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) AS
-SELECT task_id, student, text, `date` AS submission_datetime FROM junk_solutions;
+SELECT task_id, student, `text`, `date` AS submission_datetime FROM junk_solutions;
 
 CREATE TABLE IF NOT EXISTS bcnf_grades
 (
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS bcnf_grades
     student VARCHAR(40) NOT NULL,
     task_id INT NOT NULL,
     grade_datetime TIMESTAMP NOT NULL,
-    comment VARCHAR(1000) NOT NULL,
+    `comment` VARCHAR(1000) NOT NULL,
     grade INT NOT NULL,
     PRIMARY KEY(grader, student, task_id, grade_datetime),
     
@@ -110,5 +110,5 @@ CREATE TABLE IF NOT EXISTS bcnf_grades
         REFERENCES bcnf_users(login)
         ON UPDATE CASCADE ON DELETE RESTRICT
 ) AS
-SELECT `date` AS grade_datetime, grader, student, task_id, comment, grade FROM junk_grades;
+SELECT `date` AS grade_datetime, grader, student, task_id, `comment`, grade FROM junk_grades;
 
