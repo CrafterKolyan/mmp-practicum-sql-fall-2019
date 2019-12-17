@@ -1,6 +1,4 @@
-DROP TABLE IF EXISTS bcnf_user_group;
-DROP TABLE IF EXISTS bcnf_users;
-DROP TABLE IF EXISTS bcnf_groups;
+DROP TABLE IF EXISTS bcnf_users, bcnf_groups, bcnf_user_group;
 
 CREATE TABLE IF NOT EXISTS bcnf_users
 (
