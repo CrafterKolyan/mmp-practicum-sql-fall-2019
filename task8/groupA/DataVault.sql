@@ -61,18 +61,7 @@ CREATE TABLE IF NOT EXISTS datavault_group_satellite
     ResSrc VARCHAR(40),
     discipline VARCHAR(120),
     PRIMARY KEY(group_key, LoadDTS)
-) AS
-SELECT
-    "junk" AS ResSrc,
-    login,
-    name AS first_name,
-    last_name,
-    middle_name,
-    password_hash,
-    password_salt,
-    active,
-    super_user
-FROM junk_group;
+);
 
 CREATE TABLE IF NOT EXISTS datavault_user_group_satellite
 (
