@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS datavault_solution_satellite
     PRIMARY KEY(solution_key, LoadDTS)
 );
 
-CREATE TABLE IF NOT EXISTS datavault_solution_assignment_link
+CREATE TABLE IF NOT EXISTS datavault_solution_task_link
 (
     solution_task_key INT NOT NULL AUTO_INCREMENT,
     solution_key INT NOT NULL,
@@ -297,13 +297,13 @@ REFERENCES datavault_task_hub(task_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_task_assignment_link
-ADD FOREIGN KEY (task_key)
-REFERENCES datavault_assignment_hub(task_key)
+ADD FOREIGN KEY (assignment_key)
+REFERENCES datavault_assignment_hub(assignment_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_task_assignment_link
-ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_task_hub(assignment_key)
+ADD FOREIGN KEY (task_key)
+REFERENCES datavault_task_hub(task_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_solution_satellite
@@ -311,12 +311,12 @@ ADD FOREIGN KEY (solution_key)
 REFERENCES datavault_solution_hub(solution_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
-ALTER TABLE datavault_solution_assignment_link
-ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_task_hub(assignment_key)
+ALTER TABLE datavault_solution_task_link
+ADD FOREIGN KEY (task_key)
+REFERENCES datavault_task_hub(task_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
-ALTER TABLE datavault_solution_assignment_link
+ALTER TABLE datavault_solution_task_link
 ADD FOREIGN KEY (solution_key)
 REFERENCES datavault_solution_hub(solution_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
