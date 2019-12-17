@@ -83,30 +83,45 @@ CREATE TABLE IF NOT EXISTS datavault_assignment_satellite
     assignment_key INT NOT NULL AUTO_INCREMENT,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    discipline VARCHAR(120),
-    TEXT VARCHAR(1000),
+    `text` VARCHAR(1000),
     deadline DATETIME NOT NULL,
     PRIMARY KEY(assignment_key, LoadDTS)
-);
+) AS
+SELECT
+    assignment_id AS assignment_key,
+    "junk" AS ResSrc,
+    `text`,
+    deadline
+FROM junk_assignments;
 
 CREATE TABLE IF NOT EXISTS datavault_task_satellite
 (
     task_key INT NOT NULL AUTO_INCREMENT,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    TEXT VARCHAR(1000),
+    `text` VARCHAR(1000),
     PRIMARY KEY(task_key, LoadDTS)
-);
+) AS
+SELECT
+    task_id as task_key,
+    "junk" AS ResSrc,
+    `text`
+FROM junk_tasks;
 
 CREATE TABLE IF NOT EXISTS datavault_grade_satellite
 (
     grade_key INT NOT NULL AUTO_INCREMENT,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    COMMENT VARCHAR(1000) NOT NULL,
+    `comment` VARCHAR(1000) NOT NULL,
     grade INT NOT NULL,
     PRIMARY KEY(grade_key, LoadDTS)
-);
+) AS
+SELECT
+    grade_id AS grade_key,
+    "junk" AS ResSrc,
+    `text`
+FROM junk_tasks;
 
 CREATE TABLE IF NOT EXISTS datavault_group_hub
 (
@@ -158,36 +173,6 @@ CREATE TABLE IF NOT EXISTS datavault_user_group_link
     PRIMARY KEY(user_group_key)
 );
 
-CREATE TABLE IF NOT EXISTS datavault_assignment_group_link
-(
-    group_assignment_key INT NOT NULL AUTO_INCREMENT,
-    group_key INT NOT NULL,
-    assignment_key INT NOT NULL,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    PRIMARY KEY(group_assignment_key)
-);
-
-CREATE TABLE IF NOT EXISTS datavault_user_assignment_link
-(
-    user_assignment_key INT NOT NULL AUTO_INCREMENT,
-    user_key INT NOT NULL,
-    assignment_key INT NOT NULL,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    PRIMARY KEY(user_assignment_key)
-);
-
-CREATE TABLE IF NOT EXISTS datavault_task_assignment_link
-(
-    assignment_task_key INT NOT NULL AUTO_INCREMENT,
-    assignment_key INT NOT NULL,
-    task_key INT NOT NULL,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    PRIMARY KEY(assignment_task_key)
-);
-
 CREATE TABLE IF NOT EXISTS datavault_solution_satellite
 (
     solution_key INT NOT NULL AUTO_INCREMENT,
@@ -198,15 +183,56 @@ CREATE TABLE IF NOT EXISTS datavault_solution_satellite
     PRIMARY KEY(solution_key, LoadDTS)
 );
 
-CREATE TABLE IF NOT EXISTS datavault_solution_task_link
+# Group - Assignment
+
+CREATE TABLE IF NOT EXISTS datavault_assignment_group_link
 (
-    solution_task_key INT NOT NULL AUTO_INCREMENT,
-    solution_key INT NOT NULL,
-    task_key INT NOT NULL,
+    assignment_group_key INT NOT NULL AUTO_INCREMENT,
+    assignment_key INT NOT NULL,
+    group_key INT NOT NULL,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    PRIMARY KEY(solution_task_key)
-);
+    PRIMARY KEY(assignment_group_key)
+) AS 
+SELECT 
+group_key, 
+assignment_id AS assignment_key 
+FROM junk_assignments;
+
+# Task - Assignment
+
+CREATE TABLE IF NOT EXISTS datavault_task_assignment_link
+(
+    task_assignment_key INT NOT NULL AUTO_INCREMENT,
+    task_key INT NOT NULL,
+    assignment_key INT NOT NULL,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    PRIMARY KEY(task_assignment_key)
+) AS 
+SELECT 
+task_key, 
+assignment_id AS assignment_key 
+FROM junk_tasks;
+
+# User - Assignment
+
+CREATE TABLE IF NOT EXISTS datavault_user_assignment_link
+(
+    user_assignment_key INT NOT NULL AUTO_INCREMENT,
+    user_key INT NOT NULL,
+    assignment_key INT NOT NULL,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    PRIMARY KEY(user_assignment_key)
+) AS 
+SELECT 
+user_key, 
+assignment_id AS assignment_key 
+FROM junk_assignments AS assignments JOIN datavault_user_satellite AS users
+ON users.login = assignments.author;
+
+# User - Solution
 
 CREATE TABLE IF NOT EXISTS datavault_user_solution_link
 (
@@ -216,30 +242,62 @@ CREATE TABLE IF NOT EXISTS datavault_user_solution_link
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
     PRIMARY KEY(user_solution_key)
-);
+) AS 
+SELECT 
+user_key, 
+solution_id AS solution_key 
+FROM junk_solutions AS solutions JOIN datavault_user_satellite AS users
+ON users.login = solutions.student;
 
-CREATE TABLE IF NOT EXISTS datavault_grade_solution_link
-(
-    grade_solution_key INT NOT NULL AUTO_INCREMENT,
-    grade_key INT NOT NULL,
-    solution_key INT NOT NULL,
-    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    ResSrc VARCHAR(40),
-    PRIMARY KEY(grade_solution_key)
-);
+# Grade - User
 
 CREATE TABLE IF NOT EXISTS datavault_grade_user_link
 (
-    grade_solution_key INT NOT NULL AUTO_INCREMENT,
+    grade_user_key INT NOT NULL AUTO_INCREMENT,
     grade_key INT NOT NULL,
     user_key INT NOT NULL,
     LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     ResSrc VARCHAR(40),
-    PRIMARY KEY(grade_solution_key)
-);
+    PRIMARY KEY(grade_user_key)
+) AS 
+SELECT 
+user_key, 
+grade_id AS grade_key 
+FROM junk_grades AS grades JOIN datavault_user_satellite AS users
+ON users.login = grades.grader;
+
+# Solution - Task
+CREATE TABLE IF NOT EXISTS datavault_solution_task_link
+(
+    solution_task_key INT NOT NULL AUTO_INCREMENT,
+    solution_key INT NOT NULL,
+    task_key INT NOT NULL,
+    LoadDTS TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    ResSrc VARCHAR(40),
+    PRIMARY KEY(solution_task_key)
+) AS 
+SELECT 
+solution_id AS solutions_key, 
+task_id AS task_key 
+FROM junk_solutions
 
 INSERT INTO datavault_user_hub
-SELECT user_key, LoadDTS, ResSrc FROM datavault_user_satellite;
+SELECT user_key, ResSrc FROM datavault_user_satellite;
+
+INSERT INTO datavault_assignment_hub
+SELECT assignment_key, ResSrc FROM datavault_assignment_satellite;
+
+INSERT INTO datavault_grade_hub
+SELECT grade_key, ResSrc FROM datavault_grade_satellite;
+
+INSERT INTO datavault_solution_hub
+SELECT solution_key, ResSrc FROM datavault_solution_satellite;
+
+INSERT INTO datavault_task_hub
+SELECT task_key, ResSrc FROM datavault_task_satellite;
+
+INSERT INTO datavault_group_hub
+SELECT group_key, ResSrc FROM datavault_group_satellite;
 
 ALTER TABLE datavault_user_satellite
 ADD FOREIGN KEY (user_key)
