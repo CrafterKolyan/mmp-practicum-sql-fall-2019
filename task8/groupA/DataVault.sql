@@ -252,7 +252,7 @@ ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_assignment_group_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key)
+REFERENCES datavault_assignment_hub(assignment_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_assignment_group_link
@@ -270,19 +270,19 @@ ADD FOREIGN KEY (user_key)
 REFERENCES datavault_user_hub(user_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
-ALTER TABLE Пользователь Satellite
+ALTER TABLE datavault_user_satellite
 ADD FOREIGN KEY (user_key)
 REFERENCES datavault_user_hub(user_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_assignment_satellite
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key)
+REFERENCES datavault_assignment_hub(assignment_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_user_assignment_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key)
+REFERENCES datavault_assignment_hub(assignment_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_user_assignment_link
@@ -291,12 +291,12 @@ REFERENCES datavault_user_hub(user_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_task_satellite
-ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_task_hub(assignment_key)
+ADD FOREIGN KEY (task_key)
+REFERENCES datavault_task_hub(task_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
 ALTER TABLE datavault_task_assignment_link
-ADD FOREIGN KEY (assignment_key)
+ADD FOREIGN KEY (task_key)
 REFERENCES datavault_assignment_hub(task_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
 
