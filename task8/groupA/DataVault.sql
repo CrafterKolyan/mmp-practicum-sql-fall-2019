@@ -57,11 +57,6 @@ FROM junk_users;
 INSERT INTO datavault_user_hub
 SELECT user_key, LOADDTS, ResSrc FROM datavault_user_satellite;
 
-ALTER TABLE datavault_user_satellite
-ADD FOREIGN KEY (user_key)
-  REFERENCES datavault_user_hub(user_key)
-      ON UPDATE CASCADE ON DELETE RESTRICT;
-
 CREATE TABLE IF NOT EXISTS datavault_group_hub
 (
     group_key INT NOT NULL AUTO_INCREMENT,
@@ -241,94 +236,117 @@ CREATE TABLE IF NOT EXISTS datavault_grade_user_link
     PRIMARY KEY(grade_solution_key)
 );
 
+ALTER TABLE datavault_user_satellite
+ADD FOREIGN KEY (user_key)
+REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_group_link
 ADD FOREIGN KEY (group_key)
-REFERENCES datavault_group_hub(group_key);
-    
+REFERENCES datavault_group_hub(group_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_assignment_group_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key);
-    
+REFERENCES datavault_assignment_hub(task_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_assignment_group_link
 ADD FOREIGN KEY (group_key)
-REFERENCES datavault_group_hub(group_key);
-    
-ALTER TABLE datavault_group_satellite
-ADD FOREIGN KEY (group_key)
-REFERENCES datavault_group_hub(group_key);
-    
+REFERENCES datavault_group_hub(group_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_group_satellite
 ADD FOREIGN KEY (user_group_key)
-REFERENCES datavault_user_group_link(user_group_key);
-    
+REFERENCES datavault_user_group_link(user_group_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_group_link
 ADD FOREIGN KEY (user_key)
-REFERENCES datavault_user_hub(user_key);
-    
+REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE Пользователь Satellite
 ADD FOREIGN KEY (user_key)
-REFERENCES datavault_user_hub(user_key);
-    
+REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_assignment_satellite
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key);
-    
+REFERENCES datavault_assignment_hub(task_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_assignment_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key);
-    
+REFERENCES datavault_assignment_hub(task_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_assignment_link
 ADD FOREIGN KEY (user_key)
-REFERENCES datavault_user_hub(user_key);
-    
+REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_task_satellite
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_task_hub(assignment_key);
-    
+REFERENCES datavault_task_hub(assignment_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_task_assignment_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_assignment_hub(task_key);
-    
+REFERENCES datavault_assignment_hub(task_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_task_assignment_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_task_hub(assignment_key);
-    
+REFERENCES datavault_task_hub(assignment_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_solution_satellite
 ADD FOREIGN KEY (solution_key)
-REFERENCES datavault_solution_hub(solution_key);
-    
+REFERENCES datavault_solution_hub(solution_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_solution_assignment_link
 ADD FOREIGN KEY (assignment_key)
-REFERENCES datavault_task_hub(assignment_key);
-    
+REFERENCES datavault_task_hub(assignment_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_solution_assignment_link
 ADD FOREIGN KEY (solution_key)
-REFERENCES datavault_solution_hub(solution_key);
-    
+REFERENCES datavault_solution_hub(solution_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_solution_link
 ADD FOREIGN KEY (user_key)
-REFERENCES datavault_user_hub(user_key);
-    
+REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_user_solution_link
 ADD FOREIGN KEY (solution_key)
-REFERENCES datavault_solution_hub(solution_key);
-    
+REFERENCES datavault_solution_hub(solution_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_grade_satellite
 ADD FOREIGN KEY (grade_key)
-REFERENCES datavault_grade_hub(grade_key);
-    
+REFERENCES datavault_grade_hub(grade_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_grade_solution_link
 ADD FOREIGN KEY (solution_key)
-REFERENCES datavault_solution_hub(solution_key);
-    
+REFERENCES datavault_solution_hub(solution_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_grade_solution_link
 ADD FOREIGN KEY (grade_key)
-REFERENCES datavault_grade_hub(grade_key);
-    
+REFERENCES datavault_grade_hub(grade_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_grade_user_link
 ADD FOREIGN KEY (grade_key)
-REFERENCES datavault_grade_hub(grade_key);
-    
+REFERENCES datavault_grade_hub(grade_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
 ALTER TABLE datavault_grade_user_link
 ADD FOREIGN KEY (user_key)
-REFERENCES datavault_user_hub(user_key);
+REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
