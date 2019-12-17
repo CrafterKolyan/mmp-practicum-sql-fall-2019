@@ -263,11 +263,11 @@ REFERENCES datavault_user_group_link(user_group_key);
     
 ALTER TABLE datavault_user_group_link
 ADD FOREIGN KEY (user_key)
-REFERENCES Пользователь HUB(user_key);
+REFERENCES datavault_user_hub(user_key);
     
 ALTER TABLE Пользователь Satellite
 ADD FOREIGN KEY (user_key)
-REFERENCES Пользователь HUB(user_key);
+REFERENCES datavault_user_hub(user_key);
     
 ALTER TABLE datavault_assignment_satellite
 ADD FOREIGN KEY (assignment_key)
@@ -279,7 +279,7 @@ REFERENCES datavault_assignment_hub(task_key);
     
 ALTER TABLE datavault_user_assignment_link
 ADD FOREIGN KEY (user_key)
-REFERENCES Пользователь HUB(user_key);
+REFERENCES datavault_user_hub(user_key);
     
 ALTER TABLE datavault_task_satellite
 ADD FOREIGN KEY (assignment_key)
@@ -307,7 +307,7 @@ REFERENCES datavault_solution_hub(solution_key);
     
 ALTER TABLE datavault_user_solution_link
 ADD FOREIGN KEY (user_key)
-REFERENCES Пользователь HUB(user_key);
+REFERENCES datavault_user_hub(user_key);
     
 ALTER TABLE datavault_user_solution_link
 ADD FOREIGN KEY (solution_key)
@@ -331,4 +331,4 @@ REFERENCES datavault_grade_hub(grade_key);
     
 ALTER TABLE datavault_grade_user_link
 ADD FOREIGN KEY (user_key)
-REFERENCES Пользователь HUB(user_key);
+REFERENCES datavault_user_hub(user_key);
