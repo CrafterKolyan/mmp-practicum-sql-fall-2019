@@ -362,8 +362,9 @@ CREATE TABLE IF NOT EXISTS datavault_grade_solution_link
     PRIMARY KEY(grade_solution_key)
 ) AS 
 SELECT 
-solution_id + 1 AS solutions_key, 
-grade_id + 1 AS grade_key 
+solution_id + 1 AS solution_key, 
+grade_id + 1 AS grade_key,
+"junk" AS ResSrc 
 FROM junk_solutions AS solutions JOIN junk_grades AS grades
 ON solutions.task_id = grades.task_id AND solutions.student = grades.student;
 
@@ -480,4 +481,9 @@ ON UPDATE CASCADE ON DELETE RESTRICT;
 ALTER TABLE datavault_grade_user_link
 ADD FOREIGN KEY (user_key)
 REFERENCES datavault_user_hub(user_key)
+ON UPDATE CASCADE ON DELETE RESTRICT;
+
+ALTER TABLE datavault_group_satellite
+ADD FOREIGN KEY (group_key)
+REFERENCES datavault_group_hub(group_key)
 ON UPDATE CASCADE ON DELETE RESTRICT;
