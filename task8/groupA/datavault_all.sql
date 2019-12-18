@@ -49,7 +49,7 @@ FROM (
                 ON
                     s_t_l.task_key = t_a_l.task_key
                 INNER JOIN
-                    s_gr1.datavault_assignment_group_link as a_grp_l
+                    s_gr1.datavault_assignment_group_link AS a_grp_l
                 ON
                     t_a_l.assignment_key = a_grp_l.assignment_key
             ) AS tmp_tmp_tbl
@@ -197,7 +197,7 @@ ORDER BY
 -- Query #4
 
 SELECT
-	u_grp_l.group_key AS group_key,
+	u_grp_l.group_key - 1 AS group_key,
 	COUNT(*) AS students_amount
 FROM
 	s_gr1.datavault_user_group_link AS u_grp_l
