@@ -213,3 +213,4 @@ ORDER BY
     students_amount DESC,
     u_grp_l.group_key
 ;
+

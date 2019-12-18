@@ -159,3 +159,4 @@ ORDER BY
     students_amount DESC,
     group_id
 ;
+
