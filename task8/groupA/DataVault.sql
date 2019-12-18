@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS datavault_assignment_group_link,
                      datavault_grade_user_link,
                      datavault_group_hub,
                      datavault_group_satellite,
-                     datavault_solution_assignment_link,
                      datavault_solution_hub,
                      datavault_solution_satellite,
                      datavault_solution_task_link,
@@ -111,6 +110,7 @@ CREATE TABLE IF NOT EXISTS datavault_grade_satellite
 ) AS
 SELECT
     grade_id + 1 AS grade_key,
+    `date` AS LoadDTS,
     "junk" AS ResSrc,
     `comment`,
     grade
