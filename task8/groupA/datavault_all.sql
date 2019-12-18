@@ -49,7 +49,7 @@ FROM (
                 ON
                     s_t_l.task_key = t_a_l.task_key
                 INNER JOIN
-                    s_gr1.datavault_assignment_group_link AS a_grp_l
+                    s_gr1.datavault_assignment_group_link as a_grp_l
                 ON
                     t_a_l.assignment_key = a_grp_l.assignment_key
             ) AS tmp_tmp_tbl
@@ -69,7 +69,7 @@ ON
     user_key_to_login.user_key = u_s.user_key
 ORDER BY
     mean_grade DESC,
-	u_s.login DESC
+	u_s.login
 LIMIT
 	5
 ;
@@ -210,5 +210,6 @@ WHERE
 GROUP BY
 	u_grp_l.group_key
 ORDER BY
-	students_amount DESC
+	students_amount DESC,
+    u_grp_l.group_key
 ;

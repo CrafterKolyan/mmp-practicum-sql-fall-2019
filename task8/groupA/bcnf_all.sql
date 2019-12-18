@@ -36,7 +36,8 @@ GROUP BY
 	a.group_id,
 	tmp_tbl.student
 ORDER BY
-	 AVG(tmp_tbl.grade) DESC
+	 AVG(tmp_tbl.grade) DESC,
+     tmp_tbl.student
 LIMIT
 	5
 ;
@@ -155,5 +156,6 @@ WHERE
 GROUP BY
 	ug.group_id
 ORDER BY
-	students_amount DESC
+	students_amount DESC,
+    group_id
 ;
