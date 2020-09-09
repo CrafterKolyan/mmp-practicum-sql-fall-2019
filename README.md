@@ -52,10 +52,10 @@
 Чтобы появились обновления от других людей, нужно обновиться до новой версии репозитория.  
 Один из вариантов (нужно находиться на ветке `master` (которая совпадает с `origin/master`)):
 ```
-git remote add root https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019.git
-git fetch -p root
+git remote add upstream https://github.com/CrafterKolyan/mmp-practicum-sql-fall-2019.git
+git fetch -p upstream
 git stash
-git rebase root/master
+git rebase upstream/master
 git stash pop
 ```
 В случае возникновения ошибки `rebase`'a:
@@ -70,7 +70,7 @@ git push origin --force-with-lease
 ```
 Можно дополнительно убрать добавленный `remote`:
 ```
-git remote remove root
+git remote remove upstream
 ```
 Если не устраивает:
 ```
