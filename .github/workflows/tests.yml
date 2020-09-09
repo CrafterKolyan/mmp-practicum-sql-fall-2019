@@ -30,7 +30,9 @@ jobs:
         cd ..
 
     - name: Initialize database
-      run: mysql -uroot -proot < ./data/trjudge.sql
+      run: |
+        sudo service mysql start
+        mysql -uroot -proot < ./data/trjudge.sql
 
     - name: Installing MySQLdb and pytz
       run: |
