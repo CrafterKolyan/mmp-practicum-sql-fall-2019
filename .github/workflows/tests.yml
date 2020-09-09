@@ -1,9 +1,6 @@
 name: Tests
 
-on: 
-  push:
-  schedule:
-    - cron: '30 4 2,16 * *'
+on: [push]
 
 jobs:
   equality_test:
