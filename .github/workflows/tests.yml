@@ -57,7 +57,7 @@ jobs:
 
     - name: Push cached queries to origin/master
       if: always()
-      uses: ad-m/github-push-action@v.0.6.0
+      uses: ad-m/github-push-action@v0.6.0
       with:
         branch: master
         github_token: ${{ secrets.GITHUB_TOKEN }}
